@@ -54,7 +54,7 @@ const Bid=()=>{
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                <p className="spade-icon"><p>&#9824;</p><p style={{marginLeft: "-20px", marginTop: "-20px"}}>&#9824;</p><p style={{marginLeft: "-20px"}}>&#9824;</p></p>
+                <p className="spade-icon"><p>&#9824;</p><p style={{marginLeft: "-20px", marginTop: "-30px"}}>&#9824;</p><p style={{marginLeft: "-20px"}}>&#9824;</p></p>
                     <p>TRIPLE PANNA</p>
                 </div>
 

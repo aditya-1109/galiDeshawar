@@ -48,7 +48,7 @@
     color: white;
     stroke: rgb(235, 100, 122);
     stroke-width: 25px;
-    size: 70;
+    font-size: 70px;
 }
 
 .spade-icon{
@@ -68,15 +68,16 @@
     }
 
     .All-in-one{
-        width: 100px;
+        width: 120px;
+        font-weight: 500;
     }
 
     .spade-icon{
-        font-size: 50px;
+        font-size: 60px;
     }
 
     .gamepad-icon{
-        size: 60px;
+        font-size: 60px;
     }
 }
 
