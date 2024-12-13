@@ -1,0 +1,50 @@
+.chart-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.chart-Heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    color: white;
+    background-color: red;
+    margin: 20px 0 10px 0;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.chart-subheading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    color: black;
+    margin: 10px 0;
+    background-color: rgb(255, 162, 0);
+}
+
+.roomName-heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    color: blue;
+    padding: 10px;
+    font-size: large;
+    background-color: yellow;
+}
+
+.chart-table{
+    width: 300px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.chart-table tbody tr:nth-child(odd) {
+    background-color: blue; /* Light grey for odd rows */
+  }

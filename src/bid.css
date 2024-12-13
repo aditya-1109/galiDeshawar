@@ -1,0 +1,63 @@
+.digit-bid{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 5px 5px rgb(127, 125, 125);
+}
+
+.bid-heading{
+    color: rgb(235, 100, 122);
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 30px 0px 5px;
+}
+
+.playbid-icon{
+    transform: rotate(90deg);
+    margin-left: auto;
+    filter: drop-shadow(3px 5px 5px rgb(235, 100, 122));
+}
+
+
+
+.bid-icon-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 50px 30px;
+    
+}
+
+.All-in-one{
+    height: auto;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    color: rgb(235, 100, 122);
+    gap: 10px 0;
+    font-weight: 700;
+}
+
+.gamepad-icon{
+    color: white;
+    stroke: rgb(235, 100, 122);
+    stroke-width: 25px;
+}
+
+.spade-icon{
+    font-size: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    height: 50px;
+}
+
+
+

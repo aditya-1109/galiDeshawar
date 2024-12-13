@@ -1,0 +1,154 @@
+.home-container{
+    background-color: darkred;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+}
+
+.tagline-container{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.tagline{
+    color: white;
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.tagline-image{
+    width: 100px;
+    height: auto;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.contact-details{
+    color: black;
+    margin: 10px;
+    font-size: large;
+    white-space: nowrap; 
+    overflow: hidden;
+    width: 100%; 
+    animation: slide 10s linear infinite; /* Change duration as needed */
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .contact-icons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 50px;
+    padding: 20px;
+  }
+
+  .wallet-icon{
+    background-color: rgb(1, 65, 46);
+    border-radius: 50%;
+    padding: 2px;
+    border: white solid 1px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .plus-icon{
+    border: white solid 1px;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: rgb(1, 65, 46) ;
+    margin-top: -15%;
+  }
+
+  .events-container{
+    display: flex;
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .event-container{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    width: 80%;
+    border-radius: 10px;
+    padding: 10px 0;
+  }
+
+  .calender-icon{
+    background-color: rgb(246, 239, 107);
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -2%;
+    
+  }
+
+  .play-icon{
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -2%;
+    background-color:rgb(1, 65, 46) ;
+    border: white 1px solid;
+    
+  }
+
+  .time {
+    color: blue;
+    
+  }
+
+  .Number{
+    color: red;
+  }
+
+  .room-name{
+    color: rgb(170, 38, 73);
+  }
+
+  .status{
+    color: green;
+  }
+
+  .Duration{
+    color: orange;
+  }
+
+  @media (max-width: 768px) {
+    .calender-icon{
+        margin-left: -6%;
+    }
+    .play-icon{
+        margin-right: -6%;
+    }
+  }

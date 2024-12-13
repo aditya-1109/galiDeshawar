@@ -1,0 +1,10 @@
+.withdrawal-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.withdrawal-button{
+    background-color: red;
+    color: white;
+}

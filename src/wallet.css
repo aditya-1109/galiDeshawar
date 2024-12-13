@@ -1,0 +1,32 @@
+.wallet-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.backHome{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0px 20px;
+    padding: 0px 20px;
+    border: rgb(50, 48, 48) solid;
+    border-width: 1px 0;
+}
+
+.wallet-amount{
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addFunds{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+
+.wallet-logo{
+    transform: rotate(90deg);
+}
