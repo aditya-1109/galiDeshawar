@@ -11,27 +11,27 @@ const Bid=()=>{
             <div className="bid-heading"><b>DIGIT BID</b> <FaPlay className="playbid-icon" /></div>
             <div className="bid-icon-container">
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaGamepad className="gamepad-icon" size={70} />
+                    <FaGamepad className="gamepad-icon" />
                     <p>ALL IN ONE</p>
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaDiceThree size={70} className="gamepad-icon" />
+                    <FaDiceThree className="gamepad-icon" />
                     <p>SINGLE DIGIT</p>
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaDiceSix size={70} className="gamepad-icon" />
+                    <FaDiceSix className="gamepad-icon" />
                     <p>ODD-EVEN</p>
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaDice size={70} className="gamepad-icon" />
+                    <FaDice className="gamepad-icon" />
                     <p>JODI DIGHT</p>
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaDice size={70} className="gamepad-icon" />
+                    <FaDice className="gamepad-icon" />
                     <p>RED-BRACKET</p>
                 </div>
             </div>
@@ -59,7 +59,7 @@ const Bid=()=>{
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaGem size={70} className="gamepad-icon" />
+                    <FaGem className="gamepad-icon" />
                     <p>CHOICE PANNA</p>
                 </div>
             </div>
@@ -75,7 +75,7 @@ const Bid=()=>{
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaDiceThree size={70} className="gamepad-icon" />
+                    <FaDiceThree className="gamepad-icon" />
                     <p>FULL SANGAM</p>
                 </div>
 
@@ -104,7 +104,7 @@ const Bid=()=>{
             <div className="bid-heading"><b>FAMILY BID</b> <FaPlay className="playbid-icon" /></div>
             <div className="bid-icon-container">
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaDice size={70} className="gamepad-icon" />
+                    <FaDice className="gamepad-icon" />
                     <p>JODI FAMILY</p>
                 </div>
 
@@ -139,7 +139,7 @@ const Bid=()=>{
                 </div>
 
                 <div onClick={()=>nevigate("/placebid")} className="All-in-one">
-                    <FaDiceThree size={70} className="gamepad-icon" />
+                    <FaDiceThree className="gamepad-icon" />
                     <p>DP MOTOR</p>
                 </div>
 
