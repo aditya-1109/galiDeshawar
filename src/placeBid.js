@@ -27,7 +27,7 @@ const PlaceBid=()=>{
         </div>
 
         
-        <div className="withdrawal-container">
+        <div className="placebid-container">
                 <form className="login-form">
                     <label htmlFor="g-pay"><b>Bid Digits</b></label>
                     <input className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
@@ -35,10 +35,10 @@ const PlaceBid=()=>{
                     <input className="phonepay" style={{padding:"10px"}} type="number" placeholder="Enter Amount" />
                     <button type="submit" className="withdrawal-button">ADD BID</button>
                 </form>
-
+                <button className="bid-submit-button">Submit</button>
             </div>
 
-            <button className="bid-submit-button">Submit</button>
+            
 
         </>
     )

@@ -48,10 +48,17 @@
     font-size: large;
 }
 
+.placebid-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
 .bid-submit-button{
-    position: absolute;
-    bottom: 3%;
-    left: 35.8%;
+    position: relative;
+    margin-top: 8%;
     width: 440px;
     border: none;
     background-color: red;
@@ -65,8 +72,7 @@
 
 @media (max-width: 768px ){
     .bid-submit-button{
-        width: 250px;
-        left: 18%;
-
+        width: 220px;
+        margin-top: 40%;
     }
 }
