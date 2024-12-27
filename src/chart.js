@@ -15,8 +15,8 @@ const Chart=()=>{
 
         <div className="chart-container">
 
-        <div className="chart-Heading">Prabhas Group App</div>
-        <div className="chart-subheading">Plus Point</div>
+        <div className="chart-Heading">Gali Deshawar App</div>
+        <div className="chart-subheading">Gali Deshawar</div>
         <div className="roomName-heading">MAHAKAL MORNING CHART</div>
         <table className="chart-table">
             <thead>

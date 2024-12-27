@@ -9,7 +9,7 @@
 }
 
 .date{
-    color: red;
+    color: black;
     font-size: 30px;
     font-weight: 500;
     display: flex;
@@ -41,7 +41,7 @@
     display: flex;
     color: white;
     padding: 5px 10px;
-    background-color: red;
+    background-color: black;
     width: 200px;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,7 @@
     margin-top: 8%;
     width: 440px;
     border: none;
-    background-color: red;
+    background-color: black;
     padding: 10px;
     display: flex;
     justify-content: center;

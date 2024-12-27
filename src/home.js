@@ -31,21 +31,24 @@ const Home=()=>{
         <>
         <div className="home-container">
         <Navbar />
+
+        <div className="contactDetails">
+            <div className="contact-details">Phone pay online add points kare Whatsapp contact 9797999797</div>
+        </div>
+
         <div className="tagline-container">
-            <p className="tagline">Welcome to <b style={{color: "black", backgroundColor: "white", padding: "0 5px"}}>Plus Point</b><br />Vishwas ka dhanda vishwas ke sath</p>
+            <p className="tagline">Welcome to <b style={{color: "black", backgroundColor: "white", padding: "0 5px"}}>Gali Deshawar</b><br />Visvaas Ka Khel</p>
             <img className="tagline-image" src="/images/potImage.png" alt="tagline-image" />
 
         </div>
 
-        <div className="contact-details">
-            <b>Phone pay online add points kare Whatsapp contact 9797999797</b>
-        </div>
+       
 
         <div className="contact-icons">
-            <div className="wallet-icon" onClick={()=>nevigate("/addFunds")}> <FaWallet size={30} color="white"/><div className="plus-icon"> <AiOutlinePlus size={10} color="white" /></div></div>
+            <div className="wallet-icon" onClick={()=>nevigate("/addFunds")}> <FaWallet size={30} color="rgb(120, 43, 5)"/><div className="plus-icon"> <AiOutlinePlus size={10} color="white" style={{backgroundColor:"black", borderRadius:"50%"}} /></div></div>
            
-            <div className="wallet-icon" onClick={openWhatsapp}> <FaWhatsapp size={30} color="white" className="whatsapp-icon" /></div>
-            <div className="wallet-icon" onClick={openTelegramChat}><FaTelegram size={30} color="white" className="telegram-icon"  /></div>
+            <div className="wallet-icon" onClick={openWhatsapp}> <FaWhatsapp size={30} color="darkGreen" className="whatsapp-icon" /></div>
+            <div className="wallet-icon" onClick={openTelegramChat}><FaTelegram size={30} color="white" className="telegram-icon" /></div>
         </div>
 
         <div className="events-container">

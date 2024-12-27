@@ -1,7 +1,7 @@
 .navbar-container {
     display: flex;
     align-items: center;
-    background-color: red;
+    background-color: #363636;
     position: sticky;
     scrollbar-width: none;
 }
@@ -9,6 +9,19 @@
 .menu-icon{
     color: white;
     margin: 0 20px;
+}
+
+.websiteNameContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0 10px;
+}
+
+.websiteLogo{
+    height: 50px;
+    width: auto;
 }
 
 .websiteName{
@@ -19,7 +32,7 @@
 .walletBox{
     display: flex;
     flex-direction: row;
-    background-color: green;
+    background-color: black;
     border-radius: 50px;
     margin-left: auto;
     padding: 5px 10px;
@@ -95,6 +108,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.menu-text{
+    cursor: pointer;
 }
 
 

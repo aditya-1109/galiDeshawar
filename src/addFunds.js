@@ -14,7 +14,7 @@ const AddFunds=()=>{
                 <h2>Deposit Coins</h2>
             </div>
         <div className="funds-container">
-            <div className="balance-heading"><b>Balance</b></div>
+            <div className="rate"><b>Balance</b></div>
             <div className="balance"><b>0</b></div>
             <form className="deposit-form">
                 <input type="number" placeholder="Enter Amount to add" />

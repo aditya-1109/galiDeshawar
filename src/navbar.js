@@ -43,7 +43,11 @@ const Navbar=()=>{
             <div onClick={menuBAr} className="menuBox">
                 <FaBars size={30} className='menu-icon' />
             </div>
-            <h1 className="websiteName"><b>Website</b></h1>
+            <div className='websiteNameContainer'>
+                <img src='./images/logo.png' alt='Logo' className='websiteLogo' />
+                <h1 className="websiteName"><b>Gali Deshawar</b></h1>
+            </div>
+            
             <div onClick={()=>nevigate("/wallet")} className="walletBox">
                 <FaWallet color='white' size={30}/>
                 <div className='wallet'>0</div>
@@ -68,39 +72,39 @@ const Navbar=()=>{
             <div className='menus'>
                 <div onClick={()=>nevigate("/profile")} className='menu'>
                     <div className='menu-logo'><FaUser color='white' scale={30} /></div>
-                    <div> My Profile</div>
+                    <div className='menu-text'> My Profile</div>
                 </div>
                 <div onClick={()=>nevigate("/wallet")} className='menu'>
                     <div className='menu-logo'><FaWallet color='white' scale={30} /></div>
-                    <div> My Wallet</div>
+                    <div className='menu-text'> My Wallet</div>
                 </div>
                 <div onClick={()=>nevigate("/played")} className='menu'>
                     <div className='menu-logo'><FaHistory color='white' scale={30} /></div>
-                    <div> Game History</div>
+                    <div className='menu-text'> Game History</div>
                 </div>
                 <div onClick={()=>nevigate("/GameRate")} className='menu'>
                     <div className='menu-logo'><FaGamepad color='white' scale={30} /></div>
-                    <div> Game Rate</div>
+                    <div className='menu-text'> Game Rate</div>
                 </div>
                 <div onClick={()=>nevigate("/addFunds")} className='menu'>
                     <div className='menu-logo'><FaWallet scale={30} color="white"/><div className="plus-icon"> <AiOutlinePlus size={10} color="white" /></div></div>
-                    <div> Add Points</div>
+                    <div className='menu-text'> Add Points</div>
                 </div>
                 <div onClick={()=>nevigate("/withdrawal")}  className='menu'>
                     <div className='menu-logo'><FaUniversity color='white' scale={30} /></div>
-                    <div> Withdrawal</div>
+                    <div className='menu-text'> Withdrawal</div>
                 </div>
                 <div onClick={()=>nevigate("/transfer")} className='menu'>
                     <div className='menu-logo'><FaExchangeAlt color='white' scale={30} /></div>
-                    <div> Transfer Coins</div>
+                    <div className='menu-text'> Transfer Coins</div>
                 </div>
                 <div onClick={()=>nevigate("/info")} className='menu'>
                     <div className='menu-logo'><FaRegComment color='white' scale={30} /></div>
-                    <div> How To Play</div>
+                    <div className='menu-text'> How To Play</div>
                 </div>
                 <div onClick={()=>nevigate("/info")} className='menu'>
                     <div className='menu-logo'><FaPhone color='white' scale={30} /></div>
-                    <div> Contact Us</div>
+                    <div className='menu-text'> Contact Us</div>
                 </div>
                 <div 
                     className='menu' 

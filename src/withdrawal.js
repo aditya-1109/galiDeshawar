@@ -29,7 +29,7 @@ const WithDrawal=()=>{
                     <input className="amountpaid" style={{padding:"10px"}} type="number" placeholder="Enter Amount" />
                     <label htmlFor="id-detail">ID Details</label>
                     <input className="id-detail" style={{padding:"10px"}} type="number" placeholder="Enter ID Detail" />
-                    <button type="submit" className="withdrawal-button">Submit</button>
+                    <button type="submit" className="register-button">Submit</button>
                 </form>
 
             </div>

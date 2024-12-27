@@ -19,7 +19,7 @@ const Transfer=()=>{
                     <input className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Mobile number" />
                    
                     <input className="id-detail" style={{padding:"10px"}} type="number" placeholder="Enter amount" />
-                    <button type="submit" className="withdrawal-button">Transfer Coins</button>
+                    <button type="submit" className="register-button">Transfer Coins</button>
                 </form>
 
             </div>

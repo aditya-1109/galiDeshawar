@@ -41,7 +41,7 @@ const Login=()=>{
     return(
         <>
         <div className="login-container">
-        <img className="website-logo" src="/images/websiteLogo.png" alt="website-logo"/>
+        <img className="website-logo" src="/images/fullLogo.png" alt="website-logo"/>
         <h1 className="login-dialog">Login Your Account</h1>
         {alert && (<div className="alert alert-danger mobile-alert" role="alert">
                  {alert}

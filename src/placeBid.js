@@ -33,7 +33,7 @@ const PlaceBid=()=>{
                     <input className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
                     <label htmlFor="phonepay"><b>Bid Points</b></label>
                     <input className="phonepay" style={{padding:"10px"}} type="number" placeholder="Enter Amount" />
-                    <button type="submit" className="withdrawal-button">ADD BID</button>
+                    <button type="submit" className="register-button">ADD BID</button>
                 </form>
                 <button className="bid-submit-button">Submit</button>
             </div>
