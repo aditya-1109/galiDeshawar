@@ -40,7 +40,7 @@ const Home = () => {
   // Fetch data from the API
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://first-backend-phi.vercel.app/lotteryData");
+      const response = await axios.get("https://first-backend-201m.onrender.com/lotteryData");
       setData(response.data);
     };
 

@@ -13,7 +13,7 @@ const Played=()=>{
     useEffect(()=>{
         const getData=async()=>{
             console.log(number);
-            const response= await axios.post("hhttps://first-backend-phi.vercel.app/getUser", {number});
+            const response= await axios.post("https://first-backend-201m.onrender.com/getUser", {number});
             setUser(response.data.user)
         }
         getData();
