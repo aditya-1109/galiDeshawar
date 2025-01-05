@@ -116,6 +116,15 @@
     
   }
 
+  .number-container{
+    text-align: center;
+  }
+
+  .name-container{
+    text-align: center;
+  }
+
+
   .play-icon{
     border-radius: 50%;
     height: 60px;
@@ -147,7 +156,11 @@
   }
 
   .Duration{
-    color: orange;
+    color: orangered;
+  }
+
+  .closestatus{
+    color: red;
   }
 
   @media (max-width: 768px) {

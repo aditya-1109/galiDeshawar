@@ -1,0 +1,153 @@
+.admin-container{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.user-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0 30px;
+    padding: 20px;
+}
+
+
+.user-heading{
+    color: white;
+    font-weight: 500;
+    font-size: large;
+}
+
+.userNumberForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-input{
+    border: none;
+    border-radius: 1px;
+    font-size: large;
+    margin: 10px;
+    padding: 5px;
+    width: 200px;
+    background-color: rgb(240, 237, 237);
+}
+
+.userInfo-container{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    flex-direction: row;
+    padding: 30px;
+    color: white;
+    gap: 20px 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.userInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px grey;
+    padding: 10px;
+    min-height: 100px;
+}
+
+.userHeading{
+    color: red;
+    font-weight: 500;
+    font-size: large;
+}
+
+.betHeading{
+    color: red;
+    margin-top: 5px;
+    border: solid 1px white;
+    border-width: 1px 0 0 0;
+}
+
+.betInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    box-shadow: 2px 2px 2px grey;
+    padding: 20px;
+    gap: 20px 30px;
+    flex-wrap: wrap;
+    color: white;
+}
+
+.walletButton{
+    border: white 1px solid;
+    color: white;
+    background-color: black;
+}
+
+.lotteryAdminContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px 0;
+    background-color: #363636;
+    margin-top: 20px;
+}
+
+.lotteryContainer{
+    display: flex;
+    border: solid 2px white;
+    background-color: black;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.lottryAdminHeading{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.lottery-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 10px;
+    flex-wrap: wrap;
+   
+}
+
+.lottery-form input{
+    width: 100px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.submit{
+    background-color: black;
+    border: white solid 2px;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .userInfo{
+        flex-wrap: wrap;
+        width: 100px;
+        overflow: scroll;
+        align-items: flex-start;
+        scrollbar-width: none;
+        height: 100px;
+    }
+}

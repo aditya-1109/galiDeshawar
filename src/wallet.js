@@ -1,10 +1,24 @@
 import { FaArrowLeft, FaRegHandPointer } from "react-icons/fa";
 import "./wallet.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Wallet=()=>{
 
     const nevigate= useNavigate();
+    const number= localStorage.getItem("number");
+    const [user, setUser]= useState("");
+
+    useEffect(()=>{
+        const getData=async()=>{
+            console.log(number);
+            const response= await axios.post("http://localhost:4000/getUser", {number});
+            setUser(response.data.user)
+            console.log(response.data.user)
+        }
+        getData();
+    },[])
 
     const back=()=>{
         nevigate("/home")
@@ -18,7 +32,7 @@ const Wallet=()=>{
                 <h2>My Wallet</h2>
             </div>
             
-            <div className="wallet-amount"><div>0 ₹</div></div>
+            <div className="wallet-amount"><div>{user.wallet} ₹</div></div>
             <div onClick={()=>nevigate("/addFunds")} className="addFunds">
                 <p>Add Funds</p>
                 <FaRegHandPointer className="wallet-logo logo" size={30} />

@@ -13,7 +13,7 @@ const Info=()=>{
             </div>
 
             <div className="withdrawal-container">
-            <p>Welcome to Plus point Matka application. Now minimum bid Rs.5, 100% genuine... application and instant withdraw, add money,bindass play and earn a lot of money. Any problem feel free to whatsapp 24*7 available our support team. </p>
+            <p>Welcome to Gali Deshawar Matka Website. Now minimum bid Rs.5, 100% genuine... application and instant withdraw, add money,bindass play and earn a lot of money. Any problem feel free to whatsapp 24*7 available our support team. </p>
             </div>
         </>
     )

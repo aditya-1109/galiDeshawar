@@ -14,6 +14,7 @@ import Info from './info';
 import Chart from './chart';
 import Bid from './bid';
 import PlaceBid from './placeBid';
+import Admin from './admin';
 
 const routes=createBrowserRouter([
   {
@@ -65,12 +66,16 @@ const routes=createBrowserRouter([
     element: <Chart />
   },
   {
-    path: "/bid",
+    path: "/bid/:lotteryName",
     element: <Bid />
   },
   {
-    path: "/placebid",
+    path: "/placebid/:lotteryName/:bidName",
     element: <PlaceBid />
+  },
+  {
+    path:"/admin",
+    element: <Admin />
   }
 ])
 
