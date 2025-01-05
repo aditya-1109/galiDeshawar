@@ -29,12 +29,10 @@ const Login=()=>{
         try {
             setAlert(null); 
     
-            const response = await axios.post("http://localhost:4000/verifyUser", {
+            const response = await axios.post("https://first-backend-phi.vercel.app/verifyUser", {
                 number: mobileNumber,
                 password,
             });
-
-            console.log(response.data);
     
             if (response.data.success) {
                 setAlert(null);

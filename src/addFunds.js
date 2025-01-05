@@ -14,7 +14,7 @@ const AddFunds=()=>{
     useEffect(()=>{
         const getData=async()=>{
             console.log(number);
-            const response= await axios.post("http://localhost:4000/getUser", {number});
+            const response= await axios.post("https://first-backend-phi.vercel.app/getUser", {number});
             setUser(response.data.user)
             console.log(response.data.user)
         }

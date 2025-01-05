@@ -8,7 +8,6 @@ const Bid=()=>{
 
     const {lotteryName}= useParams();
 
-    console.log(lotteryName)
     return(
         <>
         <div className="digit-bid">

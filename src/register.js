@@ -47,7 +47,7 @@ const Register=()=>{
     
         try {
     
-            const registerUser = await axios.post("http://localhost:4000/registerUser", {
+            const registerUser = await axios.post("https://first-backend-phi.vercel.app/registerUser", {
                 mobileNumber,
                 password,
                 email,

@@ -21,7 +21,7 @@ const Admin = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("http://localhost:4000/lotteryData");
+      const response = await axios.get("https://first-backend-phi.vercel.app/lotteryData");
       setData(response.data);
     }
     getData();
@@ -30,7 +30,7 @@ const Admin = () => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const response = await axios.post("http://localhost:4000/getUser", { number });
+      const response = await axios.post("https://first-backend-phi.vercel.app/getUser", { number });
       console.log(response.data.user);
       if (response.data.user.authority === "admin") {
         setShowpage(true);
@@ -52,7 +52,7 @@ const Admin = () => {
 
   const handleWallet = async (e) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:4000/setWallet", { wallet: walletRef.current.value, number: numberRef.current.value });
+    const response = await axios.post("https://first-backend-phi.vercel.app/setWallet", { wallet: walletRef.current.value, number: numberRef.current.value });
     if (response.data.success) {
       alert("Successfully updated")
     } 
@@ -78,7 +78,7 @@ const Admin = () => {
       setAlert("Invalid mobile number. Must be 10 digits.");
       return;
     }
-    const response = await axios.post("http://localhost:4000/getUser", { number: mobileNumber });
+    const response = await axios.post("https://first-backend-phi.vercel.app/getUser", { number: mobileNumber });
     if (response.data.success) {
       setUser(response.data.user);
     }else{
@@ -98,7 +98,7 @@ const Admin = () => {
 
     console.log(`Submitting data for ${lotteryName}:`, lotteryData);
 
-    const response = await axios.post("http://localhost:4000/submitData", { lotteryName, lotteryData });
+    const response = await axios.post("https://first-backend-phi.vercel.app/submitData", { lotteryName, lotteryData });
 
     alert(response.data);
     setFormValues((prevValues) => ({
