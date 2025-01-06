@@ -143,12 +143,12 @@
     display: flex;
     background-color: #a7a6a6;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 10px;
     width: 70vw;
     flex-wrap: wrap;
-    padding: 10px 40px;
+    padding: 10px;
 }
 
 .choicpanaInputContainer {
