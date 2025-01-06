@@ -17,6 +17,7 @@
     align-items: center;
     flex-direction: row;
     gap: 0 10px;
+    color: white;
 }
 
 .websiteLogo{
@@ -96,10 +97,11 @@
     flex-direction: row;
     gap: 0 20px;
     padding: 15px;
+    color: white;
 }
 
 .menu-logo{
-    background-color:rgb(1, 65, 46) ;
+    background-color:black ;
     border: 1px white solid;
     border-radius: 50%;
     width: 40px;
