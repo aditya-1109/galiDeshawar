@@ -32,7 +32,7 @@ const Wallet=()=>{
                 <h2>My Wallet</h2>
             </div>
             
-            <div className="wallet-amount"><div>{user.wallet} ₹</div></div>
+            <div className="wallet-amount"><div>₹ {user?.wallet} </div></div>
             <div onClick={()=>nevigate("/addFunds")} className="addFunds">
                 <p>Add Funds</p>
                 <FaRegHandPointer className="wallet-logo logo" size={30} />
