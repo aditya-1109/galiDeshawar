@@ -46,6 +46,11 @@ const Navbar=()=>{
           document.removeEventListener('mousedown', handleClickOutside);
         };
       }, [showMenuBar]);
+
+      const logout=()=>{
+        localStorage.removeItem("number");
+        nevigate("/")
+      }
     
 
     
@@ -143,7 +148,7 @@ const Navbar=()=>{
                     <div className='menu-logo'><AiFillStar color='white' scale={30} /></div>
                     <div> Rate us</div>
                 </div>
-                <div onClick={()=>nevigate("/")} className='menu'>
+                <div onClick={logout} className='menu'>
                     <div className='menu-logo'><FaSignOutAlt color='white' scale={30} /></div>
                     <div> Logout Account</div>
                 </div>
