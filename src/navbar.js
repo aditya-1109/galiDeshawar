@@ -5,17 +5,29 @@ import {motion, spring} from "framer-motion";
 import { AiFillStar, AiOutlinePlus } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { Switch } from '@mui/material';
+import axios from 'axios';
 
 const Navbar=()=>{
 
     const [showMenuBar, setShowMenuBar]= useState(false);
     const nevigate= useNavigate();
     const menuRef = useRef(null);
+    const number= localStorage.getItem("number");
+    const [user, setUser]= useState("");
 
     // Function to toggle the menu
     const menuBAr = () => {
         setShowMenuBar(!showMenuBar);
     };
+
+    useEffect(()=>{
+        const getData=async()=>{
+            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
+            setUser(response.data.user)
+            console.log(response.data.user)
+        }
+        getData();
+    },[])
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -56,8 +68,8 @@ const Navbar=()=>{
         {showMenuBar && (<motion.div ref={menuRef} className='menuBar-container' initial={{x: "-30vw"}} animate={{x:0}} transition={{type: spring, duration: 2}} >
             <div className='menu-header'>
                 <div className='id-container'>
-                    <div className='name'>Name</div>
-                    <div className='number'>Number</div>
+                    <div className='name' style={{color: "white"}}>{user?.name}</div>
+                    <div className='number' style={{color: "white"}}>{user?.number}</div>
                 </div>
             
                 <img className="logo" src="/images/websiteLogo.png" alt="website-logo"/>
