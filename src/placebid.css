@@ -149,6 +149,7 @@
     width: 70vw;
     flex-wrap: wrap;
     padding: 10px;
+    padding: 0 10px;
 }
 
 .choicpanaInputContainer {
