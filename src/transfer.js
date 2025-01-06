@@ -1,10 +1,65 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./withdrawal.css";
+import { useRef, useState } from "react";
 
 const Transfer=()=>{
 
     const nevigate=useNavigate();
+    const numberRef= useRef();
+    const amountRef=useRef();
+    const [alertt, setAlert]= useState();
+    const myNumber= localStorage.getItem("number");
+
+    const confirmTransfer=(e)=>{
+        e.preventDefault();
+        const mobileNumber = numberRef.current.value.trim();
+        const amount = amountRef.current.value.trim();
+    
+        if (!mobileNumber || mobileNumber.length !== 10 || !/^\d{10}$/.test(mobileNumber)) {
+            setAlert("Invalid mobile number. Must be 10 digits.");
+            return;
+        }
+        if (!amount) {
+            setAlert("Amount cannot be empty.");
+            return;
+        }
+
+        const confirmation=window.confirm(`Are you sure you want to transfer the  to ${amount} rs. to the number ${mobileNumber}`);
+        if(confirmation){
+            handleTransfer(e)
+        }
+    }
+
+    const handleTransfer=async(e)=>{
+        e.preventDefault();
+        
+    
+        try {
+            setAlert(null); 
+    
+            const response = await axios.post("https://first-backend-81m3.onrender.com/transferAmount", {
+                number: mobileNumber,
+                amount,
+                myNumber
+            });
+    
+            if (response.data.success) {
+                setAlert(null);
+                alert(response.data.message)
+            } else {
+                setAlert(response.data.message || "Invalid credentials. Please try again.");
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+    
+            if (error.response) {
+                setAlert(error.response.data.message || "An error occurred. Please try again.");
+            } else {
+                setAlert("Unable to connect to the server. Please check your internet connection.");
+            }
+        }
+    }
 
     return(
         <>
@@ -14,11 +69,13 @@ const Transfer=()=>{
         </div>
 
         <div className="withdrawal-container">
-                <form className="login-form">
-                    
-                    <input className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Mobile number" />
+                <form className="login-form" onSubmit={(e)=>confirmTransfer(e)}>
+                {alertt && (<div className="alert alert-danger mobile-alert" role="alert">
+                 {alertt}
+                 </div>)}
+                    <input className="g-pay" ref={numberRef} style={{padding:"10px"}} type="number" placeholder="Enter Mobile number" />
                    
-                    <input className="id-detail" style={{padding:"10px"}} type="number" placeholder="Enter amount" />
+                    <input className="id-detail" ref={amountRef} style={{padding:"10px"}} type="number" placeholder="Enter amount" />
                     <button type="submit" className="register-button">Transfer Coins</button>
                 </form>
 
