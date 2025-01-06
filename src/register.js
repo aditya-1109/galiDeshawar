@@ -47,7 +47,7 @@ const Register=()=>{
     
         try {
     
-            const registerUser = await axios.post("https://first-backend-201m.onrender.com/registerUser", {
+            const registerUser = await axios.post("https://first-backend-81m3.onrender.com/registerUser", {
                 mobileNumber,
                 password,
                 email,

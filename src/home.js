@@ -40,7 +40,7 @@ const Home = () => {
   // Fetch data from the API
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://first-backend-201m.onrender.com/lotteryData");
+      const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
       setData(response.data);
     };
 

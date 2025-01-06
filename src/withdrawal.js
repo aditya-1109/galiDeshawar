@@ -20,7 +20,7 @@ const WithDrawal=()=>{
 
     useEffect(()=>{
         const getData=async()=>{
-            const response= await axios.post("https://first-backend-201m.onrender.com/getUser", {number});
+            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
             setUser(response.data.user)
             console.log(response.data.user)
         }

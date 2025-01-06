@@ -13,7 +13,7 @@ const Wallet=()=>{
     useEffect(()=>{
         const getData=async()=>{
             console.log(number);
-            const response= await axios.post("https://first-backend-201m.onrender.com/getUser", {number});
+            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
             setUser(response.data.user)
             console.log(response.data.user)
         }

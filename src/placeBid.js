@@ -86,7 +86,7 @@ const PlaceBid=()=>{
     }
 
     const sendData=async()=>{
-        const response= await axios.post("https://first-backend-201m.onrender.com/setBet", {bet, number});
+        const response= await axios.post("https://first-backend-81m3.onrender.com/setBet", {bet, number});
         setBet([]);
     }
 

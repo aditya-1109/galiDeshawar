@@ -21,7 +21,7 @@ const Admin = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://first-backend-201m.onrender.com/lotteryData");
+      const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
       setData(response.data);
     }
     getData();
@@ -30,7 +30,7 @@ const Admin = () => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const response = await axios.post("https://first-backend-201m.onrender.com/getUser", { number });
+      const response = await axios.post("https://first-backend-81m3.onrender.com/getUser", { number });
       console.log(response.data.user);
       if (response.data.user.authority === "admin") {
         setShowpage(true);
@@ -52,7 +52,7 @@ const Admin = () => {
 
   const handleWallet = async (e) => {
     e.preventDefault();
-    const response = await axios.post("https://first-backend-201m.onrender.com/setWallet", { wallet: walletRef.current.value, number: numberRef.current.value });
+    const response = await axios.post("https://first-backend-81m3.onrender.com/setWallet", { wallet: walletRef.current.value, number: numberRef.current.value });
     if (response.data.success) {
       alert("Successfully updated")
     } 
@@ -78,7 +78,7 @@ const Admin = () => {
       setAlert("Invalid mobile number. Must be 10 digits.");
       return;
     }
-    const response = await axios.post("https://first-backend-201m.onrender.com/getUser", { number: mobileNumber });
+    const response = await axios.post("https://first-backend-81m3.onrender.com/getUser", { number: mobileNumber });
     if (response.data.success) {
       setUser(response.data.user);
     }else{
@@ -98,7 +98,7 @@ const Admin = () => {
 
     console.log(`Submitting data for ${lotteryName}:`, lotteryData);
 
-    const response = await axios.post("https://first-backend-201m.onrender.com/submitData", { lotteryName, lotteryData });
+    const response = await axios.post("https://first-backend-81m3.onrender.com/submitData", { lotteryName, lotteryData });
 
     alert(response.data);
     setFormValues((prevValues) => ({
