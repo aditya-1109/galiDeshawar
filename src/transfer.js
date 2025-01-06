@@ -2,6 +2,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./withdrawal.css";
 import { useRef, useState } from "react";
+import axios from "axios";
 
 const Transfer=()=>{
 
@@ -27,11 +28,11 @@ const Transfer=()=>{
 
         const confirmation=window.confirm(`Are you sure you want to transfer the  to ${amount} rs. to the number ${mobileNumber}`);
         if(confirmation){
-            handleTransfer(e)
+            handleTransfer(e, mobileNumber, amount)
         }
     }
 
-    const handleTransfer=async(e)=>{
+    const handleTransfer=async(e, mobileNumber, amount)=>{
         e.preventDefault();
         
     
