@@ -39,7 +39,7 @@ const Profile=()=>{
             return;
         }
     
-            const response= await axios.post("https://first-backend-201m.onrender.com/updateUser", {name, email, mobile: mobileNumber, number})
+            const response= await axios.post("https://first-backend-81m3.onrender.com/updateUser", {name, email, mobile: mobileNumber, number})
             if(response.data.success){
                 alert(response.data.message);
                 if(mobileNumber){
@@ -65,7 +65,7 @@ const Profile=()=>{
             return;
         }
     
-        const response= await axios.post("https://first-backend-201m.onrender.com/updateUser", {password, number})
+        const response= await axios.post("https://first-backend-81m3.onrender.com/updateUser", {password, number})
             if(response.data.success){
                 alert(response.data.message)
             }else{
