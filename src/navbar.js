@@ -67,7 +67,7 @@ const Navbar=()=>{
             
             <div onClick={()=>nevigate("/wallet")} className="walletBox">
                 <FaWallet color='white' size={30}/>
-                <div className='wallet'>0</div>
+                <div className='wallet'>{user?.wallet}</div>
             </div>
         </div>
         {showMenuBar && (<motion.div ref={menuRef} className='menuBar-container' initial={{x: "-30vw"}} animate={{x:0}} transition={{type: spring, duration: 2}} >
