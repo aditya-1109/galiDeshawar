@@ -48,6 +48,8 @@ const Transfer=()=>{
             if (response.data.success) {
                 setAlert(null);
                 alert(response.data.message)
+                numberRef.current.value="";
+                amountRef.current.value="";
             } else {
                 setAlert(response.data.message || "Invalid credentials. Please try again.");
             }
