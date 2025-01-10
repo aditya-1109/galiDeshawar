@@ -176,9 +176,9 @@ const Admin = () => {
                   <h5>{lotteryModel.initialTime} - {lotteryModel.finalTime}</h5>
                 </div>
                 <form className="lottery-form" onSubmit={(e) => handleSubmit(e, lotteryModel.lotteryName)}>
-                  <input value={lotteryModel.winnerNumber[lotteryModel.winnerNumber.length-1].open || ""} onChange={(e) => handleChange(e, lotteryModel.lotteryName, "open",)} type="text" placeholder="open" />
-                  <input value={formValues[lotteryModel.lotteryName]?.jodi || ""} onChange={(e) => handleChange(e, lotteryModel.lotteryName, "jodi",)} type="text" placeholder="jodi" />
-                  <input value={formValues[lotteryModel.lotteryName]?.close || ""} onChange={(e) => handleChange(e, lotteryModel.lotteryName, "close",)} type="text" placeholder="close" />
+                  <input value={lotteryModel.winnerNumber?.[lotteryModel.winnerNumber.length-1]?.open || ""} onChange={(e) => handleChange(e, lotteryModel.lotteryName, "open",)} type="text" placeholder="open" />
+                  <input value={lotteryModel.winnerNumber?.[lotteryModel.winnerNumber.length-1]?.jodi || ""} onChange={(e) => handleChange(e, lotteryModel.lotteryName, "jodi",)} type="text" placeholder="jodi" />
+                  <input value={lotteryModel.winnerNumber?.[lotteryModel.winnerNumber.length-1]?.close || ""} onChange={(e) => handleChange(e, lotteryModel.lotteryName, "close",)} type="text" placeholder="close" />
                   <input className="submit" type="submit" value="Submit" />
                 </form>
               </div>
