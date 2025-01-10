@@ -13,7 +13,7 @@ const PlaceBid=()=>{
     const month = today.toLocaleString('default', { month: 'short' }); 
     const year = today.getFullYear();
     const formattedDate = `${month}, ${day < 10 ? '0' : ''}${day} ${year}`;
-    const digitRef= useRef();
+    const digitRef= useRef("");
     const amountRef= useRef();
     const {lotteryName}= useParams();
     const {bidName}= useParams();
@@ -89,7 +89,7 @@ const PlaceBid=()=>{
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(digitRef.current.value){
+        if(digitRef.current.value!==""){
             setDigit((prevDigits) => [...prevDigits, digitRef.current.value]);
         }
         digit.forEach((digi)=>{
