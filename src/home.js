@@ -54,14 +54,7 @@ const [winning, setWinning]= useState(null);
         const lotteryData = response.data;
 
         setData(lotteryData);
-        console.log(lotteryData);
-        console.log(lotteryData.winningNumber);
-        const winner = lotteryData?.winningNumber.find((win) => win.date === date);
-        console.log(winner);
-        if (winner) {
-          setWinning(winner);
-          
-        }
+        
       } catch (error) {
         console.error("Error fetching lottery data:", error);
       }
@@ -150,7 +143,11 @@ const [winning, setWinning]= useState(null);
               </div>
               <div className="time"><b>{lottery.finalTime}</b></div>
             </div>
-            <div className="name-container">
+            {lottery.winningNumber.map((winning, index)=>(
+              <>
+              {winning.date===date && (
+                <>
+                <div className="name-container">
               <div className="room-name"><b>{lottery.lotteryName}</b></div>
               {winning?.status==="RUNNING"?<div className="status"><b>{winning?.status}</b></div>: <div className="closestatus"><b>{winning?.status}</b></div> }
               <div className="Duration"><b>{lottery.RemainingTime}</b></div>
@@ -158,6 +155,10 @@ const [winning, setWinning]= useState(null);
             <div onClick={winning?.status==="CLOSED"?alert("This is closed now!!"):() => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
               <FaForward size={40} color="white" />
             </div>
+            </>)}
+            </>
+            ))}
+            
           </div>
         </div>
       ))}
