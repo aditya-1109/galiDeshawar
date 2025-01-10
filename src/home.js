@@ -54,8 +54,7 @@ const [winning, setWinning]= useState(null);
         const lotteryData = response.data;
 
         setData(lotteryData);
-        console.log(lotteryData);
-        const winner = lotteryData.winningNumber.find((win) => win.date === date);
+        const winner = lotteryData?.winningNumber.find((win) => win.date === date);
         console.log(winner);
         if (winner) {
           setWinning(winner);
