@@ -50,7 +50,7 @@ const PlaceBid=()=>{
 
 
     const handleSingleInput=(e, index)=>{
-        const object={betName:lotteryName, betType,amount: e.target.value, digit: index};
+        const object={betName:lotteryName, betType, bidName,amount: e.target.value, digit: index};
         setBet((prev)=>[...prev, object]);
     }
 
