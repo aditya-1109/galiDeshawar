@@ -12,7 +12,7 @@ const Chart=()=>{
 
     useEffect(()=>{
         const getData=async()=>{
-            const lotteryData= await axios.gett("https://first-backend-81m3.onrender.com/lotteryData");
+            const lotteryData= await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
             const data=lotteryData.data.find((lottery)=> lottery.lotteryName== lotteryName);
             setData(data.winningNumber)
         }
