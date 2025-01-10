@@ -15,7 +15,7 @@ const day= dat.getDate();
 const month= dat.getMonth() +1;
 const date= `${day}/${month}`;
 
-const [winning, setwinning]= useState(null);
+const [winning, setWinning]= useState(null);
 
 
   const calculateRemainingTime = (finalTime) => {
@@ -49,17 +49,24 @@ const [winning, setwinning]= useState(null);
   // Fetch data from the API
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
-      setData(response.data);
-      response.data.winningNumber.forEach((win)=>{
-        if(win.date=== date){
-          setwinning(win)
+      try {
+        const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
+        const lotteryData = response.data;
+
+        setData(lotteryData);
+
+        // Find the winning number for the specified date
+        const winner = lotteryData.winningNumber.find((win) => win.date === date);
+        if (winner) {
+          setWinning(winner);
         }
-      })
+      } catch (error) {
+        console.error("Error fetching lottery data:", error);
+      }
     };
 
-    if(!data){
-    getData();
+    if (!data) {
+      getData();
     }
   }, []);
 
