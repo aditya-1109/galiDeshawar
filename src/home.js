@@ -67,9 +67,10 @@ const [winning, setWinning]= useState(null);
       }
     };
 
+    if (!data) {
       getData();
-    
-  }, [data, date]);
+    }
+  }, []);
 
 
   useEffect(() => {
