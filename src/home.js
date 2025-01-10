@@ -53,11 +53,12 @@ const [winning, setWinning]= useState(null);
         const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
         const lotteryData = response.data;
 
-
+        setData(lotteryData);
+        console.log(date)
         const winner = lotteryData.winningNumber.find((win) => win.date === date);
         if (winner) {
           setWinning(winner);
-          setData(lotteryData);
+          
           console.log(winner);
         }
       } catch (error) {
