@@ -10,17 +10,17 @@ const Home = () => {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
-  const dat= new Date;
-const day= dat.getDate();
-const month= dat.getMonth() +1;
-const date= `${day}/${month}`;
+  const dat = new Date;
+  const day = dat.getDate();
+  const month = dat.getMonth() + 1;
+  const date = `${day}/${month}`;
 
-const [winning, setWinning]= useState(null);
+  const [winning, setWinning] = useState(null);
 
 
   const calculateRemainingTime = (finalTime) => {
     const currentTime = new Date();
-    const [time, period] = finalTime.split(" "); 
+    const [time, period] = finalTime.split(" ");
     const [hours, minutes] = time.split(":").map(Number);
 
 
@@ -35,7 +35,7 @@ const [winning, setWinning]= useState(null);
     const timeDifference = finalDateTime - currentTime;
 
     if (timeDifference <= 0) {
-      return "00:00:00"; 
+      return "00:00:00";
     }
 
     const remainingHours = Math.floor(timeDifference / (1000 * 60 * 60));
@@ -54,20 +54,20 @@ const [winning, setWinning]= useState(null);
         const lotteryData = response.data;
 
         setData(lotteryData);
-        
+
       } catch (error) {
         console.error("Error fetching lottery data:", error);
       }
     };
 
-    
-      getData();
-    
+
+    getData();
+
   }, [date]);
 
 
   useEffect(() => {
-    if (!data) return; 
+    if (!data) return;
 
     const interval = setInterval(() => {
       setData((prevData) => {
@@ -78,9 +78,9 @@ const [winning, setWinning]= useState(null);
       });
     }, 1000);
 
-    
+
     return () => clearInterval(interval);
-  }, [data]); 
+  }, [data]);
 
   const openWhatsapp = () => {
     const phoneNumber = "9540441958";
@@ -136,29 +136,30 @@ const [winning, setWinning]= useState(null);
             <div className="calender-icon" onClick={() => navigate(`/chart/${lottery.lotteryName}`)}>
               <FaRegCalendarAlt color="brown" size={40} />
             </div>
-            <div className="number-container">
-              <div className="time"><b>{lottery.initialTime}</b></div>
-              <div className="Number">
-                <b>{winning?.open}-{winning?.jodi}-{winning?.close}</b>
-              </div>
-              <div className="time"><b>{lottery.finalTime}</b></div>
-            </div>
-            {lottery.winningNumber.map((winning, index)=>(
+
+            {lottery.winningNumber.map((winning, index) => (
               <>
-              {winning.date===date && (
-                <>
-                <div className="name-container">
-              <div className="room-name"><b>{lottery.lotteryName}</b></div>
-              {winning?.status==="RUNNING"?<div className="status"><b>{winning?.status}</b></div>: <div className="closestatus"><b>{winning?.status}</b></div> }
-              <div className="Duration"><b>{lottery.RemainingTime}</b></div>
-            </div>
-            <div onClick={winning?.status==="CLOSED"?alert("This is closed now!!"):() => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
-              <FaForward size={40} color="white" />
-            </div>
-            </>)}
-            </>
+                {winning.date === date && (
+                  <>
+                    <div className="number-container">
+                      <div className="time"><b>{lottery.initialTime}</b></div>
+                      <div className="Number">
+                        <b>{winning?.open}-{winning?.jodi}-{winning?.close}</b>
+                      </div>
+                      <div className="time"><b>{lottery.finalTime}</b></div>
+                    </div>
+                    <div className="name-container">
+                      <div className="room-name"><b>{lottery.lotteryName}</b></div>
+                      {winning?.status === "RUNNING" ? <div className="status"><b>{winning?.status}</b></div> : <div className="closestatus"><b>{winning?.status}</b></div>}
+                      <div className="Duration"><b>{lottery.RemainingTime}</b></div>
+                    </div>
+                    <div onClick={winning?.status === "CLOSED" ? alert("This is closed now!!") : () => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
+                      <FaForward size={40} color="white" />
+                    </div>
+                  </>)}
+              </>
             ))}
-            
+
           </div>
         </div>
       ))}
