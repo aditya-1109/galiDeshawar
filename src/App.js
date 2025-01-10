@@ -107,7 +107,7 @@ const routes = createBrowserRouter([
     ),
   },
   {
-    path: "/chart",
+    path: "/chart/:lotteryName",
     element: (
       <ProtectedRoute isAuthenticated={isAuthenticated}>
         <Chart />

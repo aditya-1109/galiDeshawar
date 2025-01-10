@@ -10,10 +10,19 @@ const Home = () => {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
+  const dat= new Date;
+const day= dat.getDate();
+const month= dat.getMonth() +1;
+const date= `${day}/${month}`;
+
+const [winning, setwinning]= useState(null);
+
+
   const calculateRemainingTime = (finalTime) => {
     const currentTime = new Date();
     const [time, period] = finalTime.split(" "); 
     const [hours, minutes] = time.split(":").map(Number);
+
 
     const finalDateTime = new Date();
     finalDateTime.setHours(
@@ -42,6 +51,11 @@ const Home = () => {
     const getData = async () => {
       const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
       setData(response.data);
+      response.data.winningNumber.forEach((win)=>{
+        if(win.date=== date){
+          setwinning(win)
+        }
+      })
     };
 
     if(!data){
@@ -117,22 +131,22 @@ const Home = () => {
       {data?.map((lottery, index) => (
         <div className="events-container" key={index}>
           <div className="event-container">
-            <div className="calender-icon" onClick={() => navigate("/chart")}>
+            <div className="calender-icon" onClick={() => navigate(`/chart/${lottery.lotteryName}`)}>
               <FaRegCalendarAlt color="brown" size={40} />
             </div>
             <div className="number-container">
               <div className="time"><b>{lottery.initialTime}</b></div>
               <div className="Number">
-                <b>{lottery.winningNumber.open}-{lottery.winningNumber.jodi}-{lottery.winningNumber.close}</b>
+                <b>{winning.open}-{winning.jodi}-{winning.close}</b>
               </div>
               <div className="time"><b>{lottery.finalTime}</b></div>
             </div>
             <div className="name-container">
               <div className="room-name"><b>{lottery.lotteryName}</b></div>
-              {lottery.status==="RUNNING"?<div className="status"><b>{lottery.status}</b></div>: <div className="closestatus"><b>{lottery.status}</b></div> }
+              {winning.status==="RUNNING"?<div className="status"><b>{winning.status}</b></div>: <div className="closestatus"><b>{winning.status}</b></div> }
               <div className="Duration"><b>{lottery.RemainingTime}</b></div>
             </div>
-            <div onClick={() => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
+            <div onClick={winning.status==="CLOSED"?alert("This is closed now!!"):() => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
               <FaForward size={40} color="white" />
             </div>
           </div>

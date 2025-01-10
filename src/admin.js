@@ -18,6 +18,8 @@ const Admin = () => {
   const walletRef = useRef();
   const [showWallet, setShowWallet] = useState(false);
   const [showBets, setShowBets] = useState(false);
+  const [showWalletChange, setshowWalletChange]= useState(false);
+
 
   useEffect(() => {
     const getData = async () => {
@@ -34,6 +36,10 @@ const Admin = () => {
       console.log(response.data.user);
       if (response.data.user.authority === "admin") {
         setShowpage(true);
+      }
+      else if (response.data.user.authority === "producer") {
+        setShowpage(true);
+        setshowWalletChange(true);
       }
     }
     getUserData();
@@ -133,7 +139,7 @@ const Admin = () => {
               <div className="userInfo"><div className="userHeading">Name</div>{user.name}</div>
               <div className="userInfo"><div className="userHeading">Password</div>{user.password}</div>
               <div className="userInfo"><div className="userHeading">Email</div>{user.email}</div>
-              <div className="userInfo"><div className="userHeading">Wallet</div>{user.wallet}<button className="walletButton" onClick={() => setShowWallet(!showWallet)}>Change</button></div>
+              <div className="userInfo"><div className="userHeading">Wallet</div>{user.wallet}{showWalletChange && <button className="walletButton" onClick={() => setShowWallet(!showWallet)}>Change</button>}</div>
 
               {showWallet && (
                 <form onSubmit={(e) => handleWallet(e)}>

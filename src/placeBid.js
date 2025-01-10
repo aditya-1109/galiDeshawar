@@ -23,6 +23,7 @@ const PlaceBid=()=>{
     const [digit, setDigit]= useState([]);
     const [bet, setBet]= useState([]);
     const singleArray= [0,1,2,3,4,5,6,7,8,9];
+    const [data, setData]= useState(null);
 
     useEffect(()=>{
         if(bidName==="oddeven"){
@@ -31,6 +32,21 @@ const PlaceBid=()=>{
             setDigit([0,11,22,33,44,55,66,77,88,99])
         }
     },[])
+
+    useEffect(() => {
+        const getData = async () => {
+          const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
+          response.data.forEach((lottery)=>{
+            if(lottery.lotteryName===lotteryName){
+                setData(lottery)
+            }
+          })
+        };
+    
+        if(!data){
+        getData();
+        }
+      }, []);
 
 
     const handleSingleInput=(e, index)=>{
@@ -77,7 +93,7 @@ const PlaceBid=()=>{
             setDigit((prevDigits) => [...prevDigits, digitRef.current.value]);
         }
         digit.forEach((digi)=>{
-            const object={betName:lotteryName, betType,amount: amountRef.current.value, digit: digi};
+            const object={betName:lotteryName, betType, bidName,  amount: amountRef.current.value, digit: digi};
             setBet((prev)=>[...prev, object]);
         })
         digitRef.current.value="";
@@ -86,7 +102,19 @@ const PlaceBid=()=>{
     }
 
     const sendData=async()=>{
-        const response= await axios.post("https://first-backend-81m3.onrender.com/setBet", {bet, number});
+        if(data?.status==="CLOSED"){
+            alert("this is closed now!!")
+        }else if(data?.status==="OPENED" && betType==="open"){
+            alert("couldn't place open bet for this")
+        }else{
+            const response= await axios.post("https://first-backend-81m3.onrender.com/setBet", {bet, number});
+            if(response.data.success){
+                alert("Bet placed Successfully")
+            }else{
+                alert("couldn't placed the bet");
+            }
+        }
+        
         setBet([]);
     }
 

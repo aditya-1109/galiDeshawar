@@ -1,10 +1,22 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import "./chart.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Chart=()=>{
 
     const nevigate= useNavigate();
+    const {lotteryName}= useParams();
+    const [data, setData]= useState(null);
+
+    useEffect(()=>{
+        const getData=async()=>{
+            const lotteryData= await axios.post("", {lotteryName});
+            setData(lotteryData.data.winningNumber)
+        }
+    },[])
+
     return(
         <>
 
@@ -28,32 +40,21 @@ const Chart=()=>{
                 </tr>
                 
             </thead>
+            {data && 
             <tbody>
-            <tr>
-                <td>Date</td>
-                <td>Open</td>
-                <td>Jodi</td>
-                <td>Close</td>
-            </tr>
-            <tr>
-                <td>Date</td>
-                <td>Open</td>
-                <td>Jodi</td>
-                <td>Close</td>
-            </tr>
-            <tr>
-                <td>Date</td>
-                <td>Open</td>
-                <td>Jodi</td>
-                <td>Close</td>
-            </tr>
-            <tr>
-                <td>Date</td>
-                <td>Open</td>
-                <td>Jodi</td>
-                <td>Close</td>
-            </tr>
+                {data.map((dat, index)=>(
+                    <tr key={index}>
+                    <td>{dat.date}</td>
+                    <td>{dat.open}</td>
+                    <td>{dat.jodi}</td>
+                    <td>{dat.close}</td>
+                    </tr>
+
+                ))}
+           
+        
             </tbody>
+            }
         </table>
 
         </div>
