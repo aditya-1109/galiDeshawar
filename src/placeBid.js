@@ -91,12 +91,13 @@ const PlaceBid=()=>{
         e.preventDefault();
         if(digitRef.current){
             setDigit((prevDigits) => [...prevDigits, digitRef.current.value]);
+            digitRef.current.value="";
         }
         digit.forEach((digi)=>{
             const object={betName:lotteryName, betType, bidName,  amount: amountRef.current.value, digit: digi};
             setBet((prev)=>[...prev, object]);
         })
-        digitRef.current.value="";
+        
         amountRef.current.value="";
         setDigit([]);
     }
