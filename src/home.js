@@ -143,7 +143,7 @@ const [winning, setwinning]= useState(null);
             </div>
             <div className="name-container">
               <div className="room-name"><b>{lottery.lotteryName}</b></div>
-              {winning.status==="RUNNING"?<div className="status"><b>{winning?.status}</b></div>: <div className="closestatus"><b>{winning?.status}</b></div> }
+              {winning?.status==="RUNNING"?<div className="status"><b>{winning?.status}</b></div>: <div className="closestatus"><b>{winning?.status}</b></div> }
               <div className="Duration"><b>{lottery.RemainingTime}</b></div>
             </div>
             <div onClick={winning?.status==="CLOSED"?alert("This is closed now!!"):() => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
