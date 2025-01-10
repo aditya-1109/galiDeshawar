@@ -106,7 +106,12 @@ const Admin = () => {
 
     const response = await axios.post("https://first-backend-81m3.onrender.com/submitData", { lotteryName, lotteryData });
 
-    alert(response.data);
+    if(response.data.success){
+      alert(response.data.message)
+    }else{
+      alert(response.data.message);
+    }
+    
     setFormValues((prevValues) => ({
       ...prevValues,
       [lotteryName]: {},
