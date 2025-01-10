@@ -89,7 +89,7 @@ const PlaceBid=()=>{
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(digitRef.current.value){
+        if(digitRef.current){
             setDigit((prevDigits) => [...prevDigits, digitRef.current.value]);
         }
         digit.forEach((digi)=>{
