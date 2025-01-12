@@ -15,8 +15,6 @@ const Home = () => {
   const month = dat.getMonth() + 1;
   const date = `${day}/${month}`;
 
-  const [winning, setWinning] = useState(null);
-
 
   const calculateRemainingTime = (finalTime) => {
     const currentTime = new Date();
@@ -51,19 +49,17 @@ const Home = () => {
     const getData = async () => {
       try {
         const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
-        const lotteryData = response.data;
 
-        setData(lotteryData);
+        setData(response.data);
 
       } catch (error) {
         console.error("Error fetching lottery data:", error);
       }
     };
 
-
     getData();
 
-  }, [date]);
+  }, []);
 
 
   useEffect(() => {
@@ -83,14 +79,14 @@ const Home = () => {
   }, [data]);
 
   const openWhatsapp = () => {
-    const phoneNumber = "9540441958";
+    const phoneNumber = "9200580590";
     const message = "Hello, I need some help";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
   const openTelegramChat = () => {
-    const phoneNumber = "9540441958";
+    const phoneNumber = "9200580590";
     const message = "Hello, I need some help";
     const telegramUrl = `https://t.me/+${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(telegramUrl, "_blank");
@@ -102,7 +98,7 @@ const Home = () => {
     <div className="home-container">
       <Navbar />
       <div className="contactDetails">
-        <div className="contact-details">Phone pay online add points kare Whatsapp contact 9797999797</div>
+        <div className="contact-details">Phone pay online add points kare Whatsapp contact 9200580590</div>
       </div>
 
       <div className="tagline-container">
