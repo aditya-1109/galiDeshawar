@@ -15,7 +15,7 @@ const WithDrawal=()=>{
     const iFSCRef= useRef("");
     const amountRef= useRef("");
     const IDRef= useRef("");
-    const number= localStorage.getItem("number");
+    const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
 
     useEffect(()=>{

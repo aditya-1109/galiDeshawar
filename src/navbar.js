@@ -12,7 +12,7 @@ const Navbar=()=>{
     const [showMenuBar, setShowMenuBar]= useState(false);
     const nevigate= useNavigate();
     const menuRef = useRef(null);
-    const number= localStorage.getItem("number");
+    const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
 
     // Function to toggle the menu

@@ -19,7 +19,7 @@ import ProtectedRoute from './ProtectRoute';
 
 let isAuthenticated= false;
 
-const number= localStorage.getItem("number");
+const number= localStorage.getItem("code");
 if(number){
   isAuthenticated=true;
 }

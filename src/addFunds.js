@@ -7,13 +7,13 @@ import axios from "axios";
 const AddFunds=()=>{
 
     const nevigate= useNavigate();
-    const number= localStorage.getItem("number");
+    const number= localStorage.getItem("code");
     const inputRef= useRef();
     const [user, setUser]= useState("");
 
     useEffect(()=>{
         const getData=async()=>{
-            console.log(number);
+            
             const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
             setUser(response.data.user)
             console.log(response.data.user)

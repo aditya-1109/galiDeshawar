@@ -6,7 +6,7 @@ import axios from "axios";
 
 const PlaceBid=()=>{
 
-    const number= localStorage.getItem("number");
+    const number= localStorage.getItem("code");
     const [user, setUser]= useState(null);
     const nevigate= useNavigate();
     const today = new Date();
@@ -389,8 +389,6 @@ const PlaceBid=()=>{
                     </table>
 
                 
-                
-
                 <button onClick={sendData} className="bid-submit-button">Submit</button>
             
 

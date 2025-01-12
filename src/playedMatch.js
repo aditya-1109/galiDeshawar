@@ -7,7 +7,7 @@ import axios from "axios";
 const Played=()=>{
 
     const nevigate= useNavigate();
-    const number= localStorage.getItem("number");
+    const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
 
     useEffect(()=>{

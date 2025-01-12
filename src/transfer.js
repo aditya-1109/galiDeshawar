@@ -10,7 +10,7 @@ const Transfer=()=>{
     const numberRef= useRef();
     const amountRef=useRef();
     const [alertt, setAlert]= useState();
-    const myNumber= localStorage.getItem("number");
+    const myNumber= localStorage.getItem("code");
 
     const confirmTransfer=(e)=>{
         e.preventDefault();

@@ -12,7 +12,7 @@ const Profile=()=>{
     const mobileRef= useRef("");
     const newPasswordRef= useRef("");
     const confirmPasswordRef= useRef("");
-    const number= localStorage.getItem("number");
+    const number= localStorage.getItem("code");
 
     const back=()=>{
         nevigate("/home")

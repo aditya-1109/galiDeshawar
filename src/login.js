@@ -36,7 +36,7 @@ const Login=()=>{
     
             if (response.data.success) {
                 setAlert(null);
-                localStorage.setItem("number",mobileNumber);
+                localStorage.setItem("code",response.data.user.bcryptPassword);
                 nevigate("/home");
             } else {
                 setAlert(response.data.message || "Invalid credentials. Please try again.");

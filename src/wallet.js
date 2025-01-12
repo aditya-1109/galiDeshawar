@@ -7,7 +7,7 @@ import axios from "axios";
 const Wallet=()=>{
 
     const nevigate= useNavigate();
-    const number= localStorage.getItem("number");
+    const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
 
     useEffect(()=>{

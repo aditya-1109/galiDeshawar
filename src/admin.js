@@ -11,7 +11,7 @@ const Admin = () => {
   const [data, setData] = useState(null);
   const [formValues, setFormValues] = useState({});
   const [showpage, setShowpage] = useState(false);
-  const number = localStorage.getItem("number");
+  const number = localStorage.getItem("code");
   const numberRef = useRef();
   const [alertt, setAlert] = useState("");
   const [user, setUser] = useState(null);
