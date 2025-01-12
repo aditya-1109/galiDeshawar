@@ -7,6 +7,7 @@ import axios from "axios";
 const PlaceBid=()=>{
 
     const number= localStorage.getItem("number");
+    const [user, setUser]= useState(null);
     const nevigate= useNavigate();
     const today = new Date();
     const day = today.getDate();
@@ -18,18 +19,24 @@ const PlaceBid=()=>{
     const {lotteryName}= useParams();
     const {bidName}= useParams();
     const [evenodd, setEvenOdd]= useState("odd");
-
     const [betType, setBetType]= useState("open");
-    const [digit, setDigit]= useState([]);
     const [bet, setBet]= useState([]);
     const singleArray= [0,1,2,3,4,5,6,7,8,9];
     const [data, setData]= useState(null);
+    const [fixBet, setFixBet]= useState([]);
+    const leftRef= useRef("");
+    const middleRef= useRef("");
+    const rightRef= useRef("");
+    const [selectedBids, setSelectedBids] = useState({ singlebid: true, doublebid: false, triplebid: false});
+    const [choice, setChoice]= useState("singlebid");
 
     useEffect(()=>{
         if(bidName==="oddeven"){
-            setDigit([1,3,5,7,9])
+            const bett= [{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 1, status: false},{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 3, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 5, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 7, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 9, status: false} ]
+            setBet(bett);
         }else if(bidName==="redbracket"){
-            setDigit([0,11,22,33,44,55,66,77,88,99])
+            const bett= [{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 0, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 11, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:22, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 33, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 44, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 55, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 66, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:77, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 88, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 99, status: false}  ]
+            setBet(bett);
         }
     },[])
 
@@ -48,59 +55,174 @@ const PlaceBid=()=>{
         }
       }, []);
 
+      useEffect(()=>{
+        const getUSer= async() =>{
+            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
+            setUser(response.data);
+        }
+        getUSer()
+      },[])
 
-    const handleSingleInput=(e, index)=>{
-        const object={betName:lotteryName, betType, bidName,amount: e.target.value, digit: index};
-        setBet((prev)=>[...prev, object]);
-    }
+
+      const handleSingleInput = (e, index) => {
+        if (e.target.value !== "") {
+            let updated = false;
+    
+            const updatedBet = bet.map((bett) => {
+                if (bett.digit === index) {
+                    updated = true;
+                    return { ...bett, amount: e.target.value }; 
+                }
+                return bett; 
+            });
+    
+            if (updated) {
+                setBet(updatedBet); 
+            } else {
+                
+                const object = {
+                    betName: lotteryName,
+                    betType,
+                    bidName: "singleDigit",
+                    amount: e.target.value,
+                    digit: index,
+                    status: false,
+                };
+                setBet((prev) => [...prev, object]); 
+            }
+        }
+
+    };
+    
 
     const handleEvenOdd=(value)=>{
         if(value==="even"){
-            setDigit([0,2,4,6,8]);
+            const bett= [{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 0, status: false},{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 2, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 4, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 6, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 8, status: false} ]
+            setBet(bett);
             setEvenOdd("even")
-            setBet([])
         }else if(value==="odd"){
-            setDigit([1,3,5,7,9]);
+            const bett= [{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 1, status: false},{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 3, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 5, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 7, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 9, status: false} ]
+            setBet(bett);
             setEvenOdd("odd")
-            setBet([])
         }else if(value==="halfred"){
-            setDigit([5, 16, 27, 38, 49, 50, 61, 72, 83, 94]);
+            const bett= [{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 5, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 16, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:27, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 38, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 49, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 50, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 61, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:72, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 83, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 94, status: false}  ]
+            setBet(bett);
             setEvenOdd("even")
-            setBet([])
+            
         }else if(value==="fullred"){
-            setDigit([0,11,22,33,44,55,66,77,88,99]);
+            const bett= [{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 0, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 11, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:22, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 33, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 44, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 55, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 66, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:77, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 88, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 99, status: false}  ]
+            setBet(bett);
             setEvenOdd("odd")
-            setBet([])
+           
+        }
+    }
+
+    const checkBid=(bidDigit)=>{
+        if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
+            return "single"
+        }else if(bidDigit.charAt(0)===bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
+            return "double"
+        }else if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)===bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
+            return "double"
+        }else if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)===bidDigit.charAt(2)){
+            return "double"
+        }else{
+            return "triple"
         }
     }
     
-    const handleDigit = (e) => {
+    const validateDigit = (e) => {
         e.preventDefault();
-        const newDigit = digitRef.current.value;
 
-        if (newDigit) {
-            setDigit((prevDigits) => [...prevDigits, newDigit]);
-            digitRef.current.value = ""; 
-        } else {
-            alert("Please enter a single digit (0-9).");
+        const newDigit = digitRef.current.value.trim(); // Trim whitespace to avoid invalid inputs
+
+        if (!newDigit) {
+            alert("Please enter a digit.");
+            
         }
-        digitRef.current.value="";
+    
+        if (!/^\d+$/.test(newDigit)) {
+            alert("The input must be numeric.");
+            
+        }  
+        if(newDigit.length===1){
+                setBet((prev)=>[...prev, {amount: 0, bidName: "singledigit", betName:lotteryName, betType, digit: newDigit, status: false}])
+            }else if(newDigit.length===2){
+                setBet((prev)=>[...prev, {amount: 0, bidName: "jodidight", betName:lotteryName, betType, digit: newDigit, status: false}])
+            }else if(newDigit.length===3){
+                const getBidName= checkBid(newDigit);
+                if(getBidName==="single"){
+                    setBet((prev)=>[...prev, {amount: 0, bidName: "singlepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
+                }else if(getBidName==="double"){
+                    setBet((prev)=>[...prev, {amount: 0, bidName: "doublepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
+                }else{
+                    setBet((prev)=>[...prev, {amount: 0, bidName: "triplepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
+                }
+                
+            }else{
+                alert("The input is not valid!!")
+            }
+            digitRef.current.value = ""; 
+        
     };
 
-    const handleSubmit=(e)=>{
+    const handleSingleSubmit=(e)=>{
         e.preventDefault();
-        if(digitRef.current){
-            setDigit((prevDigits) => [...prevDigits, digitRef.current.value]);
-            digitRef.current.value="";
-        }
-        digit.forEach((digi)=>{
-            const object={betName:lotteryName, betType, bidName,  amount: amountRef.current.value, digit: digi};
-            setBet((prev)=>[...prev, object]);
-        })
-        
-        amountRef.current.value="";
-        setDigit([]);
+        setFixBet((prev)=>[...prev, ...bet]);
+        setBet([]);
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        const amount = parseFloat(amountRef.current.value); 
+        if (!amount) {
+            alert("Please enter a valid amount");
+        } else if (amount < 10) {
+            alert("The minimum amount is 10");
+        } else {
+            if(bet.length>0){
+            const updatedBet = bet.map((bett) => ({
+                ...bett,
+                amount: amount, 
+            }));
+    
+            setFixBet((prev) => [...prev, ...updatedBet]);
+            }else{
+                if(digitRef.current.value!==""){
+                    const object={amount, bidName, betName:lotteryName, betType, digit: digitRef.current.value, status: false};
+                setFixBet((prev)=>[...prev,object])
+                }else{
+                    alert("Please enter the Number")
+                }
+            }
+    
+            setBet([]);
+        }
+    };
+
+    const handleChoiceInput=()=>{
+        if(leftRef.current.value!=="" && middleRef.current.value!=="" && rightRef.current.value!==""){
+            setBet([{amount: 0, bidName: choice, betName:lotteryName, betType, digit: `${leftRef.current.value}${middleRef.current.value}${rightRef.current.value}`, status: false}])
+        }
+    }
+
+    const handleChoiceBid = (bidName) => {
+        if(bidName==="singlebid"){
+            const object= {singlebid: !selectedBids.singlebid, doublebid: false, triplebid: false};
+            setSelectedBids(object);
+            setChoice("singlebid");
+        }else if(bidName==="doublebid"){
+            const object= {singlebid: false, doublebid: !selectedBids.doublebid, triplebid: false};
+            setSelectedBids(object);
+            setChoice("doublebid");
+        }else{
+            const object= {singlebid: false, doublebid: false, triplebid: !selectedBids.triplebid};
+            setSelectedBids(object)
+            setChoice("triplebid");
+        }
+    };
+
 
     const sendData=async()=>{
         if(data?.status==="CLOSED"){
@@ -108,17 +230,26 @@ const PlaceBid=()=>{
         }else if(data?.status==="OPENED" && betType==="open"){
             alert("couldn't place open bet for this")
         }else{
-            const response= await axios.post("https://first-backend-81m3.onrender.com/setBet", {bet, number});
+            let total=0;
+            fixBet.forEach((bett)=>{
+                total +=bett.amount;
+            })
+            if(total<=user.wallet){
+            const response= await axios.post("https://first-backend-81m3.onrender.com/setBet", {fixBet, number});
             if(response.data.success){
                 alert("Bet placed Successfully")
             }else{
                 alert("couldn't placed the bet");
             }
+        }else{
+            alert("You have not enough balance");
+        }
         }
         
-        setBet([]);
+        setFixBet([]);
     }
 
+    console.log(fixBet)
     return(
         <>
          <div className="backHome">
@@ -142,7 +273,7 @@ const PlaceBid=()=>{
                         <>
                         <label htmlFor="g-pay"><b>Bid Digits</b></label>
                         <input ref={digitRef} className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
-                        {bidName==="allinone" && <button onClick={handleDigit}>Validate Digit</button>}
+                        {bidName==="allinone" && <button onClick={validateDigit}>Validate Digit</button>}
                         </>
                     )}
 
@@ -164,15 +295,15 @@ const PlaceBid=()=>{
                         <div>
                             <form className="option-container">
                                 <div className="choicpanaInputContainer">
-                                    <input type="checkbox" className="custom-checkbox" id="checkboxSP" />
+                                    <input type="checkbox" onChange={()=>handleChoiceBid("singlebid")} checked={selectedBids.singlebid} className="custom-checkbox" id="checkboxSP" />
                                     <label htmlFor="checkboxSP">SP</label>
                                 </div>
                                 <div className="choicpanaInputContainer">
-                                    <input type="checkbox" className="custom-checkbox" id="checkboxDP" />
+                                    <input type="checkbox" onChange={()=>handleChoiceBid("doublebid")} checked={selectedBids.doublebid}  className="custom-checkbox" id="checkboxDP" />
                                     <label htmlFor="checkboxDP">DP</label>
                                 </div>
                                 <div className="choicpanaInputContainer">
-                                    <input type="checkbox" className="custom-checkbox" id="checkboxTP" />
+                                    <input type="checkbox" onChange={()=>handleChoiceBid("triplebid")} checked={selectedBids.triplebid}  className="custom-checkbox" id="checkboxTP" />
                                     <label htmlFor="checkboxTP">TP</label>
                                 </div>
                             </form>
@@ -180,15 +311,15 @@ const PlaceBid=()=>{
                             <form className="option-container">
                                 <div className="choicpanaDigitInputContainer">
                                     <div>Left Digit</div>
-                                    <input type="text" placeholder="Enter Left Digit"/>
+                                    <input ref={leftRef} onChange={handleChoiceInput} type="text" placeholder="Enter Left Digit"/>
                                 </div>
                                 <div className="choicpanaDigitInputContainer">
                                     <div>Middle Digit</div>
-                                    <input type="text" placeholder="Enter Middle Digit" />
+                                    <input ref={middleRef} onChange={handleChoiceInput} type="text" placeholder="Enter Middle Digit" />
                                 </div>
                                 <div className="choicpanaDigitInputContainer">
                                     <div>Right Digit</div>
-                                    <input type="text" placeholder="Enter Right Digit"/>
+                                    <input ref={rightRef} onChange={handleChoiceInput} type="text" placeholder="Enter Right Digit"/>
                                 </div>
                             </form>
                         </div>
@@ -204,8 +335,8 @@ const PlaceBid=()=>{
                     )}
                     
                     <div className="allDigitContainer">
-                    {digit && digit.map((digi, index)=>(
-                        <div key={index} className="digitContainer">{digi}</div>
+                    {bet && bet.map((digi, index)=>(
+                        <div key={index} className="digitContainer">{digi.digit}</div>
                     ))}
                     </div>
                     <label htmlFor="phonepay"><b>Bid Points</b></label>
@@ -216,20 +347,23 @@ const PlaceBid=()=>{
         </div>)}
         
         <div className="placebid-container">
-        {bidName==="singledigit" &&(<div className="single-container">
+        {bidName==="singledigit" &&(
+            <form onSubmit={handleSingleSubmit}>
+                <div className="single-container">
                 {singleArray.map((single, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{single}</div>
                         <input onChange={(e)=>handleSingleInput(e,index)} type="Number" className="singleInput"/>
                     </div>
                 ))}
-        
-        </div>)}
+                <button type="submit" className="register-button">ADD BID</button>
+            </div>
+            </form>)}
         </div>
 
             <div className="placebid-container">
                 <table className="table">
-                    {bet.length > 0 ? (
+                    {fixBet.length > 0 ? (
                         <>
                         <thead>
                             <tr>
@@ -239,7 +373,7 @@ const PlaceBid=()=>{
                             </tr>
                         </thead>
                         <tbody>
-                            {bet.map((bets, index) => (
+                            {fixBet.map((bets, index) => (
                             <tr key={index}>
                                 <td>{bets.betType}</td>
                                 <td>{bets.digit}</td>
