@@ -92,7 +92,7 @@ const Home = () => {
     window.open(telegramUrl, "_blank");
   };
 
-
+  console.log(data);
 
   return (
     <div className="home-container">
