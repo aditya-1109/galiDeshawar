@@ -59,7 +59,7 @@ const Home = () => {
 
     getData();
 
-  }, []);
+  }, [date]);
 
 
   useEffect(() => {
@@ -135,7 +135,8 @@ const Home = () => {
 
             {lottery?.winningNumber.map((winning, index) => (
               <>
-                {winning.date === date && (
+              <p>{winning?.date}</p>
+                {winning?.date === date && (
                   <>
                     <div className="number-container">
                       <div className="time"><b>{lottery.initialTime}</b></div>
