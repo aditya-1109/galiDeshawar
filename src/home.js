@@ -135,7 +135,6 @@ const Home = () => {
 
             {lottery?.winningNumber.map((winning, index) => (
               <>
-              <p>{date}</p>
                 {winning?.date === date && (
                   <>
                     <div className="number-container">
