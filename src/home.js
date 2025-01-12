@@ -92,7 +92,7 @@ const Home = () => {
     window.open(telegramUrl, "_blank");
   };
 
-  data.map((dd)=>{
+  data?.map((dd)=>{
     console.log(dd.winningNumber)
   })
 
