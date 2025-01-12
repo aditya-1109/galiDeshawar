@@ -119,15 +119,15 @@ const PlaceBid=()=>{
 
     const checkBid=(bidDigit)=>{
         if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
-            return "single"
+            return "singlebid"
         }else if(bidDigit.charAt(0)===bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
-            return "double"
+            return "doublebid"
         }else if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)===bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
-            return "double"
+            return "doublebid"
         }else if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)===bidDigit.charAt(2)){
-            return "double"
+            return "doublebid"
         }else{
-            return "triple"
+            return "triplebid"
         }
     }
     
@@ -151,9 +151,9 @@ const PlaceBid=()=>{
                 setBet((prev)=>[...prev, {amount: 0, bidName: "jodidight", betName:lotteryName, betType, digit: newDigit, status: false}])
             }else if(newDigit.length===3){
                 const getBidName= checkBid(newDigit);
-                if(getBidName==="single"){
+                if(getBidName==="singlebid"){
                     setBet((prev)=>[...prev, {amount: 0, bidName: "singlepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
-                }else if(getBidName==="double"){
+                }else if(getBidName==="doublebid"){
                     setBet((prev)=>[...prev, {amount: 0, bidName: "doublepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
                 }else{
                     setBet((prev)=>[...prev, {amount: 0, bidName: "triplepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
@@ -190,6 +190,9 @@ const PlaceBid=()=>{
             setFixBet((prev) => [...prev, ...updatedBet]);
             }else{
                 if(digitRef.current.value!==""){
+                    if(bidName==="cppanna" || bidName==="panafamily"){
+                        bidName=checkBid(digitRef.current.value);
+                    }
                     const object={amount, bidName, betName:lotteryName, betType, digit: digitRef.current.value, status: false};
                 setFixBet((prev)=>[...prev,object])
                 }else{

@@ -48,22 +48,22 @@ const Bid=()=>{
             <div className="bid-icon-container">
                 <div onClick={()=>nevigate(`/placebid/${lotteryName}/singlepanna`)} className="All-in-one">
                     <p className="spade-icon">&#9824;</p>
-                    <p>SINGLE PANNA</p>
+                    <p>SINGLE PANA</p>
                 </div>
 
                 <div onClick={()=>nevigate(`/placebid/${lotteryName}/doublepanna`)} className="All-in-one">
                     <p className="spade-icon"><p>&#9824;</p><p style={{marginLeft: "-20px"}}>&#9824;</p></p>
-                    <p>DOUBLE PANNA</p>
+                    <p>DOUBLE PANA</p>
                 </div>
 
                 <div onClick={()=>nevigate(`/placebid/${lotteryName}/triplepanna`)} className="All-in-one">
                 <p className="spade-icon"><p>&#9824;</p><p style={{marginLeft: "-20px", marginTop: "-30px"}}>&#9824;</p><p style={{marginLeft: "-20px"}}>&#9824;</p></p>
-                    <p>TRIPLE PANNA</p>
+                    <p>TRIPLE PANA</p>
                 </div>
 
                 <div onClick={()=>nevigate(`/placebid/${lotteryName}/choicepanna`)} className="All-in-one">
                     <FaGem className="gamepad-icon" />
-                    <p>CHOICE PANNA</p>
+                    <p>CHOICE PANA</p>
                 </div>
             </div>
 
@@ -126,7 +126,7 @@ const Bid=()=>{
             <div className="bid-icon-container">
                 <div onClick={()=>nevigate(`/placebid/${lotteryName}/cppanna`)} className="All-in-one">
                     <p className="spade-icon">&#9824;</p>
-                    <p>CP PANNA</p>
+                    <p>CP PANA</p>
                 </div>
 
             </div>
@@ -136,12 +136,12 @@ const Bid=()=>{
         <div className="digit-bid">
             <div className="bid-heading"><b>MOTOR BID</b> <FaPlay className="playbid-icon" /></div>
             <div className="bid-icon-container">
-                <div onClick={()=>nevigate(`/placebid/${lotteryName}/spmotor`)} className="All-in-one">
+                <div onClick={()=>nevigate(`/placebid/${lotteryName}/singlepanna`)} className="All-in-one">
                     <p className="spade-icon">&#9824;</p>
                     <p>SP MOTOR</p>
                 </div>
 
-                <div onClick={()=>nevigate(`/placebid/${lotteryName}/dpmotor`)} className="All-in-one">
+                <div onClick={()=>nevigate(`/placebid/${lotteryName}/doublepanna`)} className="All-in-one">
                     <FaDiceThree className="gamepad-icon" />
                     <p>DP MOTOR</p>
                 </div>
