@@ -92,9 +92,7 @@ const Home = () => {
     window.open(telegramUrl, "_blank");
   };
 
-  data?.map((dd)=>{
-    console.log(dd.winningNumber)
-  })
+
 
   return (
     <div className="home-container">
@@ -131,36 +129,57 @@ const Home = () => {
       {data?.map((lottery, index) => (
         <div className="events-container" key={index}>
           <div className="event-container">
-            <div className="calender-icon" onClick={() => navigate(`/chart/${lottery.lotteryName}`)}>
+            {/* Navigate to chart */}
+            <div
+              className="calendar-icon"
+              onClick={() => navigate(`/chart/${lottery.lotteryName}`)}
+            >
               <FaRegCalendarAlt color="brown" size={40} />
             </div>
 
-            {lottery.winningNumber.map((winning, index) => (
-              <>
-                {winning.date === date && (
-                  <>
-                    <div className="number-container">
-                      <div className="time"><b>{lottery.initialTime}</b></div>
-                      <div className="Number">
-                        <b>{winning?.open}-{winning?.jodi}-{winning?.close}</b>
-                      </div>
-                      <div className="time"><b>{lottery.finalTime}</b></div>
+            {lottery.winningNumber.map((winning, wIndex) => (
+              winning.date === date && (
+                <div key={wIndex}>
+                  {/* Winning Numbers */}
+                  <div className="number-container">
+                    <div className="time"><b>{lottery.initialTime}</b></div>
+                    <div className="number">
+                      <b>{winning?.open}-{winning?.jodi}-{winning?.close}</b>
                     </div>
-                    <div className="name-container">
-                      <div className="room-name"><b>{lottery.lotteryName}</b></div>
-                      {winning?.status === "RUNNING" ? <div className="status"><b>{winning?.status}</b></div> : <div className="closestatus"><b>{winning?.status}</b></div>}
-                      <div className="Duration"><b>{lottery.RemainingTime}</b></div>
-                    </div>
-                    <div onClick={winning?.status === "CLOSED" ? alert("This is closed now!!") : () => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
-                      <FaForward size={40} color="white" />
-                    </div>
-                  </>)}
-              </>
-            ))}
+                    <div className="time"><b>{lottery.finalTime}</b></div>
+                  </div>
 
+                  {/* Lottery Info */}
+                  <div className="name-container">
+                    <div className="room-name">
+                      <b>{lottery.lotteryName}</b>
+                    </div>
+                    <div className={winning?.status === "RUNNING" ? "status" : "closestatus"}>
+                      <b>{winning?.status}</b>
+                    </div>
+                    <div className="duration">
+                      <b>{lottery.RemainingTime}</b>
+                    </div>
+                  </div>
+
+                  {/* Play Icon */}
+                  <div
+                    onClick={() =>
+                      winning?.status === "CLOSED"
+                        ? alert("This is closed now!!")
+                        : navigate(`/bid/${lottery.lotteryName}`)
+                    }
+                    className="play-icon"
+                  >
+                    <FaForward size={40} color="white" />
+                  </div>
+                </div>
+              )
+            ))}
           </div>
         </div>
       ))}
+
     </div>
   );
 };
