@@ -252,11 +252,12 @@ const PlaceBid=()=>{
         }else{
             let total=0;
             fixBet.forEach((bett)=>{
-                total +=bett.amount;
+                const amount= parseInt(bett.amount);
+                total +=amount;
             })
 
-            console.log(total, user.wallet);
-            if(total<=user.wallet){
+            console.log(total, user?.wallet);
+            if(total<=user?.wallet){
             const response= await axios.post(`${link}/setBet`, {fixBet, number});
                 if(response.data.success){
                     alert("Bet placed Successfully")

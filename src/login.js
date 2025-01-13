@@ -75,7 +75,7 @@ const Login=()=>{
         <img className="website-logo" src="/images/fullLogo.png" alt="website-logo"/>
         <h1 className="login-dialog">Login Your Account</h1>
         
-        <form className="login-form" onSubmit={login}>
+        <form className="login-form" onSubmit={(e)=>login(e)}>
         {alert && (<div className="alert alert-danger mobile-alert" role="alert">
                  {alert}
             </div>)}
