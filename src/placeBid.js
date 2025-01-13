@@ -71,7 +71,7 @@ const PlaceBid=()=>{
       const handleSingleInput = (e, index) => {
         if (e.target.value !== "") {
             let updated = false;
-    
+            
             const updatedBet = bet.map((bett) => {
                 if (bett.digit === index) {
                     updated = true;
