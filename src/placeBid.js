@@ -283,7 +283,7 @@ const PlaceBid=()=>{
 
         <div className="place-bid-header">
             <div className="date"> {formattedDate}</div>
-            {(bidName==="jodidight" || bidName==="redbracket")?"":
+            {(bidName==="jodidight" || bidName==="redbracket" || bidName==="jodifamily")?"":
             <div className="open-close">
                 <button onClick={()=>setBetType("open")} className={betType==="open"?"open-button":"close-button"}>OPEN</button>
                 <button onClick={()=>setBetType("close")} className={betType==="close"?"open-button":"close-button"}>CLOSE</button>
