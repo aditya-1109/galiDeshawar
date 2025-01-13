@@ -62,7 +62,7 @@ const PlaceBid=()=>{
       useEffect(()=>{
         const getUSer= async() =>{
             const response= await axios.post(`${link}/getUser`, {number});
-            setUser(response.data);
+            setUser(response.data.user);
         }
         getUSer()
       },[])
