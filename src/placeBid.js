@@ -107,7 +107,7 @@ const PlaceBid=()=>{
             }else{
                 object= {amount: 0, bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
             }
-            setBet(object);
+            setBet([object]);
             
         }
     }
