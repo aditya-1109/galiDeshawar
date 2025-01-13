@@ -33,6 +33,7 @@ const PlaceBid=()=>{
     const [choice, setChoice]= useState("singlebid");
     const openSangamRef= useRef("");
     const closeSangamRef= useRef("");
+    const [todayBet, setTodayBet]= useState(null);
 
     useEffect(()=>{
         if(bidName==="oddeven"){
@@ -46,10 +47,20 @@ const PlaceBid=()=>{
 
     useEffect(() => {
         const getData = async () => {
+            const dat= new Date;
+            const day= dat.getDate();
+            const month= dat.getMonth() +1;
+            const date= `${day}/${month}`;
+
           const response = await axios.get(`${link}/lotteryData`);
           response.data.forEach((lottery)=>{
             if(lottery.lotteryName===lotteryName){
                 setData(lottery)
+                lottery.winningNumber.forEach((bett)=>{
+                    if(bett.date===date){
+                        setTodayBet(bett);
+                    }
+                })
             }
           })
         };
@@ -246,9 +257,9 @@ const PlaceBid=()=>{
 
 
     const sendData=async()=>{
-        if(data?.status==="CLOSED"){
+        if(todayBet?.status==="CLOSED"){
             alert("this is closed now!!")
-        }else if(data?.status==="OPENED" && betType==="open"){
+        }else if(todayBet?.status==="OPENED" && betType==="open"){
             alert("couldn't place open bet for this")
         }else{
             let total=0;
