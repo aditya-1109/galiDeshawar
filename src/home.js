@@ -151,7 +151,7 @@ const Home = () => {
                       {winning?.status === "RUNNING" ? <div className="status"><b>{winning?.status}</b></div> : <div className="closestatus"><b>{winning?.status}</b></div>}
                       <div className="Duration"><b>{lottery.RemainingTime}</b></div>
                     </div>
-                    <div onClick={winning?.status === "CLOSED" ? alert("This is closed now!!") : () => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
+                    <div onClick={winning?.status === "CLOSED" ? ()=>alert("This is closed now!!") : () => navigate(`/bid/${lottery.lotteryName}`)} className="play-icon">
                       <FaForward size={40} color="white" />
                     </div>
                   </>)}
