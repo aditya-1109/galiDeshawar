@@ -71,11 +71,12 @@ const PlaceBid=()=>{
       const handleSingleInput = (e, index) => {
         if (e.target.value !== "") {
             let updated = false;
+            const amount= parseInt(e.target.value);
             
             const updatedBet = bet.map((bett) => {
                 if (bett.digit === index) {
                     updated = true;
-                    return { ...bett, amount: e.target.value }; 
+                    return { ...bett, amount }; 
                 }
                 return bett; 
             });
@@ -88,7 +89,7 @@ const PlaceBid=()=>{
                     betName: lotteryName,
                     betType,
                     bidName: "singleDigit",
-                    amount: e.target.value,
+                    amount: amount,
                     digit: index,
                     status: false,
                 };
@@ -102,9 +103,9 @@ const PlaceBid=()=>{
         if(openSangamRef.current.value!=="" && closeSangamRef.current.value!==""){
             let object;
             if(betType==="open"){
-                object= {amount: "", bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+                object= {amount: 0, bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
             }else{
-                object= {amount: "", bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+                object= {amount: 0, bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
             }
             setBet(object);
             
@@ -114,20 +115,20 @@ const PlaceBid=()=>{
 
     const handleEvenOdd=(value)=>{
         if(value==="even"){
-            const bett= [{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 0, status: false},{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 2, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 4, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 6, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 8, status: false} ]
+            const bett= [{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 0, status: false},{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 2, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 4, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 6, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 8, status: false} ]
             setBet(bett);
             setEvenOdd("even")
         }else if(value==="odd"){
-            const bett= [{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 1, status: false},{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 3, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 5, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 7, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 9, status: false} ]
+            const bett= [{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 1, status: false},{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 3, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 5, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 7, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 9, status: false} ]
             setBet(bett);
             setEvenOdd("odd")
         }else if(value==="halfred"){
-            const bett= [{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 5, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 16, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:27, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 38, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 49, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 50, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 61, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:72, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 83, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 94, status: false}  ]
+            const bett= [{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 5, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 16, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:27, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 38, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 49, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 50, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 61, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:72, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 83, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 94, status: false}  ]
             setBet(bett);
             setEvenOdd("even")
             
         }else if(value==="fullred"){
-            const bett= [{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 0, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 11, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:22, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 33, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 44, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 55, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 66, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:77, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 88, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 99, status: false}  ]
+            const bett= [{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 0, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 11, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:22, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 33, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 44, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 55, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 66, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:77, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 88, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 99, status: false}  ]
             setBet(bett);
             setEvenOdd("odd")
            
