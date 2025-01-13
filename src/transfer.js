@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./withdrawal.css";
 import { useRef, useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Transfer=()=>{
 
@@ -11,6 +14,7 @@ const Transfer=()=>{
     const amountRef=useRef();
     const [alertt, setAlert]= useState();
     const myNumber= localStorage.getItem("code");
+    const link= process.env.LINK;
 
     const confirmTransfer=(e)=>{
         e.preventDefault();
@@ -39,7 +43,7 @@ const Transfer=()=>{
         try {
             setAlert(null); 
     
-            const response = await axios.post("https://first-backend-81m3.onrender.com/transferAmount", {
+            const response = await axios.post(`${link}/transferAmount`, {
                 number: mobileNumber,
                 amount,
                 myNumber

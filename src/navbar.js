@@ -6,11 +6,16 @@ import { AiFillStar, AiOutlinePlus } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { Switch } from '@mui/material';
 import axios from 'axios';
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const Navbar=()=>{
 
     const [showMenuBar, setShowMenuBar]= useState(false);
     const nevigate= useNavigate();
+    const link= process.env.LINK;
     const menuRef = useRef(null);
     const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
@@ -22,7 +27,7 @@ const Navbar=()=>{
 
     useEffect(()=>{
         const getData=async()=>{
-            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
+            const response= await axios.post(`${link}/getUser`, {number});
             setUser(response.data.user)
         }
         getData();

@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./addFunds.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const AddFunds=()=>{
 
@@ -10,11 +13,12 @@ const AddFunds=()=>{
     const number= localStorage.getItem("code");
     const inputRef= useRef();
     const [user, setUser]= useState("");
+    const link= process.env.LINK;
 
     useEffect(()=>{
         const getData=async()=>{
             
-            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
+            const response= await axios.post(`${link}/getUser`, {number});
             setUser(response.data.user)
             console.log(response.data.user)
         }
@@ -23,7 +27,7 @@ const AddFunds=()=>{
 
 
     const openWhatsapp = () => {
-        const phoneNumber = "9540441958";
+        const phoneNumber = "9200580590";
         const message = `For Gali Deshawar group Deposit request.\n Your id=${number} UPI ID= G pay=${9540441958}\n Amount= ${inputRef.current.value}\n Please share screenshot of payment\n scan here https://photos.app.goo.gl/7j2AEMCcW5vrCKp78`;
         const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, "_blank");

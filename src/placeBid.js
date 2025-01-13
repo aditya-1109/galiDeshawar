@@ -3,11 +3,16 @@ import { FaArrowLeft } from "react-icons/fa";
 import "./placebid.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const PlaceBid=()=>{
 
     const number= localStorage.getItem("code");
     const [user, setUser]= useState(null);
+    const link= process.env.LINK;
     const nevigate= useNavigate();
     const today = new Date();
     const day = today.getDate();
@@ -29,6 +34,8 @@ const PlaceBid=()=>{
     const rightRef= useRef("");
     const [selectedBids, setSelectedBids] = useState({ singlebid: true, doublebid: false, triplebid: false});
     const [choice, setChoice]= useState("singlebid");
+    const openSangamRef= useRef("");
+    const closeSangamRef= useRef("");
 
     useEffect(()=>{
         if(bidName==="oddeven"){
@@ -42,7 +49,7 @@ const PlaceBid=()=>{
 
     useEffect(() => {
         const getData = async () => {
-          const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
+          const response = await axios.get(`${link}/lotteryData`);
           response.data.forEach((lottery)=>{
             if(lottery.lotteryName===lotteryName){
                 setData(lottery)
@@ -57,7 +64,7 @@ const PlaceBid=()=>{
 
       useEffect(()=>{
         const getUSer= async() =>{
-            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
+            const response= await axios.post(`${link}/getUser`, {number});
             setUser(response.data);
         }
         getUSer()
@@ -93,6 +100,19 @@ const PlaceBid=()=>{
         }
 
     };
+
+    const handleSangam=()=>{
+        if(openSangamRef.current.value!=="" && closeSangamRef.current.value!==""){
+            let object;
+            if(betType==="open"){
+                object= {amount: "", bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+            }else{
+                object= {amount: "", bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+            }
+            setBet(object);
+            
+        }
+    }
     
 
     const handleEvenOdd=(value)=>{
@@ -331,9 +351,9 @@ const PlaceBid=()=>{
                     {(bidName==="fullsangam" || bidName==="halfsangam") && (
                          <>
                          <label htmlFor="g-pay"><b>Open Pana</b></label>
-                         <input ref={digitRef} className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
+                         <input onChange={handleSangam} ref={openSangamRef} className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
                          <label htmlFor="g-pay"><b>Close Pana</b></label>
-                         <input ref={digitRef} className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
+                         <input onChange={handleSangam} ref={closeSangamRef} className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
                          </>
                     )}
                     

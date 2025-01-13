@@ -3,16 +3,21 @@ import { FaArrowLeft } from "react-icons/fa";
 import "./chart.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const Chart=()=>{
 
     const nevigate= useNavigate();
     const {lotteryName}= useParams();
     const [data, setData]= useState(null);
+    const link= process.env.LINK;
 
     useEffect(()=>{
         const getData=async()=>{
-            const lotteryData= await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
+            const lotteryData= await axios.get(`${link}/lotteryData`);
             const data=lotteryData.data.find((lottery)=> lottery.lotteryName== lotteryName);
             setData(data.winningNumber)
         }

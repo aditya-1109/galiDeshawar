@@ -3,6 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import Navbar from "./navbar";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import "./admin.css";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 
 
@@ -19,11 +22,12 @@ const Admin = () => {
   const [showWallet, setShowWallet] = useState(false);
   const [showBets, setShowBets] = useState(false);
   const [showWalletChange, setshowWalletChange]= useState(false);
+  const link= process.env.LINK;
 
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("https://first-backend-81m3.onrender.com/lotteryData");
+      const response = await axios.get(`${link}/lotteryData`);
       setData(response.data);
     }
     getData();
@@ -32,7 +36,7 @@ const Admin = () => {
 
   useEffect(() => {
     const getUserData = async () => {
-      const response = await axios.post("https://first-backend-81m3.onrender.com/getUser", { number });
+      const response = await axios.post(`${link}/getUser`, { number });
       console.log(response.data.user);
       if (response.data.user.authority === "admin") {
         setShowpage(true);
@@ -58,7 +62,7 @@ const Admin = () => {
 
   const handleWallet = async (e) => {
     e.preventDefault();
-    const response = await axios.post("https://first-backend-81m3.onrender.com/setWallet", { wallet: walletRef.current.value, number: numberRef.current.value });
+    const response = await axios.post(`${link}/setWallet`, { wallet: walletRef.current.value, number: numberRef.current.value });
     if (response.data.success) {
       alert("Successfully updated")
     } 
@@ -84,7 +88,7 @@ const Admin = () => {
       setAlert("Invalid mobile number. Must be 10 digits.");
       return;
     }
-    const response = await axios.post("https://first-backend-81m3.onrender.com/getUser", { number: mobileNumber });
+    const response = await axios.post(`${link}/getUser`, { number: mobileNumber });
     if (response.data.success) {
       setUser(response.data.user);
     }else{
@@ -104,7 +108,7 @@ const Admin = () => {
 
     console.log(`Submitting data for ${lotteryName}:`, lotteryData);
 
-    const response = await axios.post("https://first-backend-81m3.onrender.com/submitData", { lotteryName, lotteryData });
+    const response = await axios.post(`${link}/submitData`, { lotteryName, lotteryData });
 
     if(response.data.success){
       alert(response.data.message)

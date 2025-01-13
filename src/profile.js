@@ -3,6 +3,9 @@ import "./wallet.css";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Profile=()=>{
 
@@ -13,6 +16,7 @@ const Profile=()=>{
     const newPasswordRef= useRef("");
     const confirmPasswordRef= useRef("");
     const number= localStorage.getItem("code");
+    const link= process.env.LINK;
 
     const back=()=>{
         nevigate("/home")
@@ -39,7 +43,7 @@ const Profile=()=>{
             return;
         }
     
-            const response= await axios.post("https://first-backend-81m3.onrender.com/updateUser", {name, email, mobile: mobileNumber, number})
+            const response= await axios.post(`${link}/updateUser`, {name, email, mobile: mobileNumber, number})
             if(response.data.success){
                 alert(response.data.message);
                 if(mobileNumber){
@@ -65,7 +69,7 @@ const Profile=()=>{
             return;
         }
     
-        const response= await axios.post("https://first-backend-81m3.onrender.com/updateUser", {password, number})
+        const response= await axios.post(`${link}/updateUser`, {password, number})
             if(response.data.success){
                 alert(response.data.message)
             }else{

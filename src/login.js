@@ -2,8 +2,14 @@ import { useRef, useState } from "react";
 import "./login.css";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const Login=()=>{
+
+    const link= process.env.LINK;
 
     const nevigate= useNavigate();
 
@@ -29,7 +35,7 @@ const Login=()=>{
         try {
             setAlert(null); 
     
-            const response = await axios.post("https://first-backend-81m3.onrender.com/verifyUser", {
+            const response = await axios.post(`${link}/verifyUser`, {
                 number: mobileNumber,
                 password,
             });
@@ -57,7 +63,7 @@ const Login=()=>{
     }
 
     const reset=()=>{
-            const phoneNumber = "9540441958"; 
+            const phoneNumber = "9200580590"; 
             const message = "Hello, I need help with resetting my account."; 
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
         

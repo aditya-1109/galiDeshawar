@@ -2,6 +2,10 @@ import { useRef, useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const Register=()=>{
 
@@ -11,6 +15,7 @@ const Register=()=>{
     let passwordRef= useRef("");
     const nevigate= useNavigate();
     const [alert, setAlert]= useState(null);
+    const link= process.env.LINK;
    
 
     const Register = async (e) => {
@@ -47,7 +52,7 @@ const Register=()=>{
     
         try {
     
-            const registerUser = await axios.post("https://first-backend-81m3.onrender.com/registerUser", {
+            const registerUser = await axios.post(`${link}/registerUser`, {
                 mobileNumber,
                 password,
                 email,

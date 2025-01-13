@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./withdrawal.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 
 const WithDrawal=()=>{
 
@@ -17,10 +21,11 @@ const WithDrawal=()=>{
     const IDRef= useRef("");
     const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
+    const link= process.env.LINK;
 
     useEffect(()=>{
         const getData=async()=>{
-            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
+            const response= await axios.post(`${link}/getUser`, {number});
             setUser(response.data.user)
             console.log(response.data.user)
         }
@@ -42,7 +47,7 @@ const WithDrawal=()=>{
     }
 
     const openWhatsapp = () => {
-        const phoneNumber = "9540441958";
+        const phoneNumber = "9200580590";
         let message;
         if(gpayRef!==""){
             message = `Hey i want to withdraw ${amountRef.current.value} from my wallet which have Rs. ${user.wallet}\n My ID is ${user.number} \n My googlePay number is ${gpayRef}`;

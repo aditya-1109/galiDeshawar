@@ -3,17 +3,21 @@ import "./wallet.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const Wallet=()=>{
 
     const nevigate= useNavigate();
     const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
+    const link= process.env.LINK;
 
     useEffect(()=>{
         const getData=async()=>{
             console.log(number);
-            const response= await axios.post("https://first-backend-81m3.onrender.com/getUser", {number});
+            const response= await axios.post(`${link}/getUser`, {number});
             setUser(response.data.user)
             console.log(response.data.user)
         }
