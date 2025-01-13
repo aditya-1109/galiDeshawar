@@ -2,14 +2,11 @@ import { useRef, useState } from "react";
 import "./login.css";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 
 const Login=()=>{
 
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
 
     const nevigate= useNavigate();
 

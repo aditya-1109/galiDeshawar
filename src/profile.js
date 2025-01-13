@@ -3,9 +3,6 @@ import "./wallet.css";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const Profile=()=>{
 
@@ -16,7 +13,7 @@ const Profile=()=>{
     const newPasswordRef= useRef("");
     const confirmPasswordRef= useRef("");
     const number= localStorage.getItem("code");
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
 
     const back=()=>{
         nevigate("/home")

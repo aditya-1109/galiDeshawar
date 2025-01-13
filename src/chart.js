@@ -3,9 +3,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import "./chart.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 
 const Chart=()=>{
@@ -13,7 +10,7 @@ const Chart=()=>{
     const nevigate= useNavigate();
     const {lotteryName}= useParams();
     const [data, setData]= useState(null);
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
 
     useEffect(()=>{
         const getData=async()=>{

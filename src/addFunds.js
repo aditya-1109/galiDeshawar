@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./addFunds.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 const AddFunds=()=>{
 
@@ -13,7 +11,7 @@ const AddFunds=()=>{
     const number= localStorage.getItem("code");
     const inputRef= useRef();
     const [user, setUser]= useState("");
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
 
     useEffect(()=>{
         const getData=async()=>{

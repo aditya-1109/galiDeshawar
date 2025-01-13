@@ -3,16 +3,13 @@ import { FaArrowLeft } from "react-icons/fa";
 import "./placebid.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 
 const PlaceBid=()=>{
 
     const number= localStorage.getItem("code");
     const [user, setUser]= useState(null);
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
     const nevigate= useNavigate();
     const today = new Date();
     const day = today.getDate();
@@ -260,7 +257,7 @@ const PlaceBid=()=>{
 
             console.log(total, user.wallet);
             if(total<=user.wallet){
-            const response= await axios.post("https://first-backend-81m3.onrender.com/setBet", {fixBet, number});
+            const response= await axios.post(`${link}/setBet`, {fixBet, number});
                 if(response.data.success){
                     alert("Bet placed Successfully")
                 }else{

@@ -3,9 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import Navbar from "./navbar";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import "./admin.css";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 
 
@@ -22,7 +19,7 @@ const Admin = () => {
   const [showWallet, setShowWallet] = useState(false);
   const [showBets, setShowBets] = useState(false);
   const [showWalletChange, setshowWalletChange]= useState(false);
-  const link= process.env.LINK;
+  const link= process.env.REACT_APP_LINK;
 
 
   useEffect(() => {

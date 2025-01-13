@@ -2,9 +2,7 @@ import { useRef, useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 
 const Register=()=>{
@@ -15,7 +13,7 @@ const Register=()=>{
     let passwordRef= useRef("");
     const nevigate= useNavigate();
     const [alert, setAlert]= useState(null);
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
    
 
     const Register = async (e) => {

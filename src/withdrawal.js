@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "./withdrawal.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 
 const WithDrawal=()=>{
@@ -21,7 +18,7 @@ const WithDrawal=()=>{
     const IDRef= useRef("");
     const number= localStorage.getItem("code");
     const [user, setUser]= useState("");
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
 
     useEffect(()=>{
         const getData=async()=>{

@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./withdrawal.css";
 import { useRef, useState } from "react";
 import axios from "axios";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 const Transfer=()=>{
 
@@ -14,7 +12,7 @@ const Transfer=()=>{
     const amountRef=useRef();
     const [alertt, setAlert]= useState();
     const myNumber= localStorage.getItem("code");
-    const link= process.env.LINK;
+    const link= process.env.REACT_APP_LINK;
 
     const confirmTransfer=(e)=>{
         e.preventDefault();

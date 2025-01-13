@@ -5,15 +5,13 @@ import { FaWhatsapp, FaTelegram, FaWallet, FaRegCalendarAlt, FaForward } from "r
 import { AiOutlinePlus } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 
 const Home = () => {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-  const link= process.env.LINK;
+  const link= process.env.REACT_APP_LINK;
   const dat = new Date;
   const day = dat.getDate();
   const month = dat.getMonth() + 1;
