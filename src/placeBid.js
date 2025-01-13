@@ -257,16 +257,18 @@ const PlaceBid=()=>{
             fixBet.forEach((bett)=>{
                 total +=bett.amount;
             })
+
+            console.log(total, user.wallet);
             if(total<=user.wallet){
             const response= await axios.post("https://first-backend-81m3.onrender.com/setBet", {fixBet, number});
-            if(response.data.success){
-                alert("Bet placed Successfully")
+                if(response.data.success){
+                    alert("Bet placed Successfully")
+                }else{
+                    alert("couldn't placed the bet");
+                }
             }else{
-                alert("couldn't placed the bet");
+                alert("You have not enough balance");
             }
-        }else{
-            alert("You have not enough balance");
-        }
         }
         
         setFixBet([]);
