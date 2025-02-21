@@ -79,7 +79,7 @@ const Login=()=>{
         {alert && (<div className="alert alert-danger mobile-alert" role="alert">
                  {alert}
             </div>)}
-            <input type="Number" placeholder="Enter Mobile number" ref={mobileRef} />
+            <input type="Number" placeholder="Enter Phone number" ref={mobileRef} />
             <input type="String" placeholder="Enter Password" ref={passwordRef} />
             <button type="submit" className="login-button">LOGIN NOW</button>
             <button onClick={register} className="register-button">REGISTER NOW</button>
