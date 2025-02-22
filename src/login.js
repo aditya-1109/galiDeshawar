@@ -18,7 +18,7 @@ const Login=()=>{
         e.preventDefault();
         const mobileNumber = mobileRef.current.value.trim();
         const password = passwordRef.current.value.trim();
-    console.log(mobileNumber);
+    
         if (!mobileNumber || mobileNumber.length !== 10 || !/^\d{10}$/.test(mobileNumber)) {
             setAlert("Invalid mobile number. Must be 10 digits.");
             return;
