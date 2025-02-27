@@ -1,95 +1,97 @@
-import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  
+  const navigate = useNavigate();
+  const [alert, setAlert] = useState(null);
+  const link = process.env.REACT_APP_LINK;
 
+  const onSubmit = async (data) => {
+    setAlert(null);
+    try {
+      const response = await axios.post(`${link}/registerUser`, data);
+      if (response.data.success) {
+        navigate("/");
+      } else {
+        setAlert(response.data.message || "Registration failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setAlert("An error occurred during registration. Please try again later.");
+    }
+  };
 
-const Register=()=>{
+  return (
+    <div className="login-container">
+      <img className="website-logo" src="/images/websiteLogo.png" alt="website-logo" />
+      <h1 className="login-dialog">Register Your Account</h1>
 
-    let mobileRef=useRef("");
-    let nameRef= useRef("");
-    let emailRef= useRef("");
-    let passwordRef= useRef("");
-    const nevigate= useNavigate();
-    const [alert, setAlert]= useState(null);
-    const link= process.env.REACT_APP_LINK;
-   
-
-    const Register = async (e) => {
-        e.preventDefault();
-    
-        const mobileNumber = mobileRef.current.value.trim();
-        const password = passwordRef.current.value.trim();
-        const email = emailRef.current.value.trim();
-        const name = nameRef.current.value.trim();
-    
-        // Validate inputs
-        if (mobileNumber.length !== 10 || !/^\d+$/.test(mobileNumber)) {
-            setAlert("Mobile number must be exactly 10 digits.");
-            return;
-        }
-
-        if (!name) {
-            setAlert("Name cannot be empty.");
-            return;
-        }
-    
-        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            setAlert("Invalid email format.");
-            return;
-        }
-    
-        if (!password || password.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/g.test(password)) {
-            setAlert("Password must be at least 8 characters long and include a special character.");
-            return;
-        }
-    
-    
-        setAlert(null);
-    
-        try {
-    
-            const registerUser = await axios.post(`${link}/registerUser`, {
-                mobileNumber,
-                password,
-                email,
-                name,
-            });
-    
-            if (registerUser.data.success) {
-                nevigate("/");
-            } else {
-                setAlert(registerUser.data.message || "Registration failed. Please try again.");
-            }
-        } catch (error) {
-            console.error("Error during registration:", error);
-            setAlert("An error occurred during registration. Please try again later.");
-        }
-    };
-    
-
-
-    return(
-        <>
-        <div className="login-container">
-        <img className="website-logo" src="/images/websiteLogo.png" alt="website-logo"/>
-        <h1 className="login-dialog">Register Your Account</h1>
+      <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
+        {alert && <div className="alert alert-danger mobile-alert">{alert}</div>}
         
-        <form className="login-form" onSubmit={Register}>
-        {alert && (<div className="alert alert-danger mobile-alert" role="alert">
-                 {alert}
-            </div>)}
-            <input type="Number" placeholder="Enter Mobile number" ref={mobileRef} />
-            <input type="text" placeholder="Enter Name" ref={nameRef} />
-            <input type="email" placeholder="Enter Email" ref={emailRef} />
-            <input type="String" placeholder="Enter Password" ref={passwordRef} />
-            <button type="submit" className="register-button">REGISTER</button>
-        </form>
-        
-        </div>
-        </>
-    )
-}
+        <input
+          type="text"
+          placeholder="Enter Mobile number"
+          {...register("mobileNumber", {
+            required: "Mobile number is required.",
+            pattern: {
+              value: /^\d{10}$/,
+              message: "Mobile number must be exactly 10 digits."
+            },
+          })}
+        />
+        {errors.mobileNumber && <p className="error">{errors.mobileNumber.message}</p>}
+
+        <input
+          type="text"
+          placeholder="Enter Name"
+          {...register("name", { required: "Name cannot be empty." })}
+        />
+        {errors.name && <p className="error">{errors.name.message}</p>}
+
+        <input
+          type="email"
+          placeholder="Enter Email"
+          {...register("email", {
+            required: "Email is required.",
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: "Invalid email format."
+            },
+          })}
+        />
+        {errors.email && <p className="error">{errors.email.message}</p>}
+
+        <input
+          type="password"
+          placeholder="Enter Password"
+          {...register("password", {
+            required: "Password is required.",
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters long."
+            },
+            pattern: {
+              value: /[!@#$%^&*(),.?":{}|<>]/g,
+              message: "Password must include a special character."
+            },
+          })}
+        />
+        {errors.password && <p className="error">{errors.password.message}</p>}
+
+        <button type="submit" className="register-button">REGISTER</button>
+      </form>
+    </div>
+  );
+};
 
 export default Register;
