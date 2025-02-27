@@ -51,7 +51,7 @@ const Login = () => {
     return (
         <>
             <div className="login-container">
-                <img className="website-logo" src="/images/fullLogo.png" alt="website-logo" />
+                <img className="website-logo" src="/images/fullLogo.png" alt="website-log" />
                 <h1 className="login-dialog">Login Your Account</h1>
                 <form className="login-form" onSubmit={handleSubmit(login)}>
                     {alert && (<div className="alert alert-danger mobile-alert" role="alert">{alert}</div>)}
