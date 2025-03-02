@@ -14,7 +14,7 @@ const Login = () => {
         const { mobileNumber, password } = data;
     
         try {
-            setAlert(null);
+            
     
             const response = await axios.post(`${link}/verifyUser`, {
                 number: mobileNumber,
@@ -23,7 +23,8 @@ const Login = () => {
     
             if (response.data.success) {
                 localStorage.setItem("code", response.data.user.bcryptPassword);
-                navigate("/home");
+                setAlert(""); 
+                setTimeout(() => navigate("/home"), 500); 
             } else {
                 setAlert(response.data.message || "Invalid credentials. Please try again.");
             }
