@@ -86,6 +86,7 @@ const Admin = () => {
       return;
     }
     const response = await axios.post(`${link}/getUser`, { number: mobileNumber });
+    console.log(response.data);
     if (response.data.success) {
       setUser(response.data.user);
     }else{
