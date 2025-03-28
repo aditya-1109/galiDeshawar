@@ -128,7 +128,7 @@ const Admin = () => {
           <div className="user-container">
             <p className="user-heading">User Portal</p>
             
-            <form className="userNumberForm" onSubmit={handleShowUser}>
+            <form className="userNumberForm" onSubmit={(e)=>handleShowUser}>
       {alertt && (
         <div className="alert alert-danger mobile-alert" role="alert">
           {alertt}
