@@ -81,14 +81,14 @@ const Home = () => {
   }, [data]);
 
   const openWhatsapp = () => {
-    const phoneNumber = "9200580590";
+    const phoneNumber = "9718992763";
     const message = "Hello, I need some help";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
   const openTelegramChat = () => {
-    const phoneNumber = "9200580590";
+    const phoneNumber = "9718992763";
     const message = "Hello, I need some help";
     const telegramUrl = `https://t.me/+${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(telegramUrl, "_blank");
@@ -100,7 +100,7 @@ const Home = () => {
     <div className="home-container">
       <Navbar />
       <div className="contactDetails">
-        <div className="contact-details">Phone pay online add points kare Whatsapp contact 9200580590</div>
+        <div className="contact-details">Phone pay online add points kare Whatsapp contact 9718992763</div>
       </div>
 
       <div className="tagline-container">

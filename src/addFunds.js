@@ -25,7 +25,7 @@ const AddFunds=()=>{
 
 
     const openWhatsapp = () => {
-        const phoneNumber = "9200580590";
+        const phoneNumber = "9718992763";
         const message = `For Gali Deshawar group Deposit request.\n Your id=${number} UPI ID= G pay=${9540441958}\n Amount= ${inputRef.current.value}\n Please share screenshot of payment\n scan here https://photos.app.goo.gl/7j2AEMCcW5vrCKp78`;
         const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, "_blank");

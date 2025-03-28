@@ -44,7 +44,7 @@ const WithDrawal=()=>{
     }
 
     const openWhatsapp = () => {
-        const phoneNumber = "9200580590";
+        const phoneNumber = "9718992763";
         let message;
         if(gpayRef!==""){
             message = `Hey i want to withdraw ${amountRef.current.value} from my wallet which have Rs. ${user.wallet}\n My ID is ${user.number} \n My googlePay number is ${gpayRef}`;
