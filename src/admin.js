@@ -76,8 +76,8 @@ const Admin = () => {
     }));
   };
 
-  const handleShowUser = async () => {
-
+  const handleShowUser = async (e) => {
+    e.preventDefault();
     const mobileNumber = numberRef.current.value.trim();
 
 
@@ -128,14 +128,24 @@ const Admin = () => {
           <div className="user-container">
             <p className="user-heading">User Portal</p>
             
-            <form className="userNumberForm">
-            {alertt && (<div className="alert alert-danger mobile-alert" role="alert">
-              {alertt}</div>)}
-              <div>
-                <input className="user-input" type="Number" ref={numberRef} placeholder="Enter the number..." />
-                <FaArrowAltCircleRight size={40} onClick={handleShowUser} />
-                </div>
-            </form>
+            <form className="userNumberForm" onSubmit={handleShowUser}>
+      {alertt && (
+        <div className="alert alert-danger mobile-alert" role="alert">
+          {alertt}
+        </div>
+      )}
+      <div>
+        <input
+          className="user-input"
+          type="number"
+          ref={numberRef}
+          placeholder="Enter the number..."
+        />
+        <button type="submit" className="submit-button">
+          <FaArrowAltCircleRight size={40} />
+        </button>
+      </div>
+    </form>
               
           </div>
 
