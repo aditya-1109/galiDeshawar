@@ -85,7 +85,7 @@ const Admin = () => {
       setAlert("Invalid mobile number. Must be 10 digits.");
       return;
     }
-    const response = await axios.post(`${link}/getUser`, { number: mobileNumber });
+    const response = await axios.post(`${link}/getAdminUser`, { number: mobileNumber });
     
     if (response.data.success) {
       setUser(response.data.user);
