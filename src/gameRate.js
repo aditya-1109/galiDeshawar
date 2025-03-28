@@ -6,7 +6,7 @@ const GameRate=()=>{
     return(
         <>
         <div className="Gamerate-container">
-            <div className="rate">Single - 10/96</div>
+            <div className="rate">Single - 10/98</div>
             <div className="rate">Jodi - 10/960</div>
             <div className="rate">Single Panna- 10/1510</div>
             <div className="rate">Double Panna - 10/3020</div>
