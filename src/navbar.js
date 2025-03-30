@@ -128,9 +128,9 @@ const Navbar=()=>{
                     onClick={() => {
                         if (navigator.share) {
                             navigator.share({
-                                title: 'Website',
-                                text: 'Check out this amazing website!',
-                                url: 'https://yourwebsite.com', // Replace with your website URL
+                                title: 'galiDeshawar',
+                                text: 'Play and earn, Visit!',
+                                url: 'https://galiDeshawar.com', 
                             }).then(() => {
                                 console.log('Thanks for sharing!');
                             }).catch((error) => {

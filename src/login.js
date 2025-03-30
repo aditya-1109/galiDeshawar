@@ -23,7 +23,7 @@ const Login = () => {
     
             if (response.data.success) {
                 localStorage.setItem("code", response.data.user.bcryptPassword);
-                setAlert(""); 
+                setAlert("login successfull! Please wait a bit to load"); 
                 setTimeout(() => navigate("/home"), 500); 
             } else {
                 setAlert(response.data.message || "Invalid credentials. Please try again.");

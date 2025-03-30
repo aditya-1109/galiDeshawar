@@ -100,7 +100,7 @@ const Home = () => {
     <div className="home-container">
       <Navbar />
       <div className="contactDetails">
-        <div className="contact-details">Points add kare Whatsapp contact 9718992763</div>
+        <div className="contact-details">पॉइंट जोड़ें (Whatsapp) 9718992763</div>
       </div>
 
       <div className="tagline-container">
