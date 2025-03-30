@@ -77,12 +77,12 @@ const Home = () => {
           const remainingTime = calculateRemainingTime(lottery.finalTime);
           const initialTimeee = calculateRemainingTime(lottery.initialTime);
 
-          if (initialTimeee === "00:00:00" && !apiCalledRef.current.has(lottery.lotteryName)) {
+          if (initialTimeee === "00:00:00" && !apiCalledRef.current.has(lottery.lotteryName) && !apiCalledfinalRef.current.has(lottery.lotteryName)) {
             apiCalledRef.current.add(lottery.lotteryName); 
             callAPI(lottery.lotteryName, "open"); 
           }
 
-          if (remainingTime === "00:00:00" && !apiCalledfinalRef.current.has(lottery.lotteryName)) {
+          if (remainingTime === "00:00:00" && !apiCalledfinalRef.current.has(lottery.lotteryName) && apiCalledRef.current.has(lottery.lotteryName)) {
             apiCalledfinalRef.current.add(lottery.lotteryName); 
             callAPI(lottery.lotteryName, "close"); 
           }
