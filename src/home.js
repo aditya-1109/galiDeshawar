@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Navbar from "./navbar";
 import { FaWhatsapp, FaTelegram, FaWallet, FaRegCalendarAlt, FaForward } from "react-icons/fa";
@@ -16,6 +16,8 @@ const Home = () => {
   const day = dat.getDate();
   const month = dat.getMonth() + 1;
   const date = `${day}/${month}`;
+  const apiCalledRef = useRef(new Set()); 
+  const apiCalledfinalRef = useRef(new Set()); 
 
 
   const calculateRemainingTime = (finalTime) => {
@@ -64,6 +66,8 @@ const Home = () => {
   }, [date]);
 
 
+  
+
   useEffect(() => {
     if (!data) return;
 
@@ -71,14 +75,35 @@ const Home = () => {
       setData((prevData) => {
         return prevData.map((lottery) => {
           const remainingTime = calculateRemainingTime(lottery.finalTime);
+          const initialTimeee = calculateRemainingTime(lottery.initialTime);
+
+          if (initialTimeee === "00:00:00" && !apiCalledRef.current.has(lottery.lotteryName)) {
+            apiCalledRef.current.add(lottery.lotteryName); 
+            callAPI(lottery.lotteryName, "open"); 
+          }
+
+          if (remainingTime === "00:00:00" && !apiCalledfinalRef.current.has(lottery.lotteryName)) {
+            apiCalledfinalRef.current.add(lottery.lotteryName); 
+            callAPI(lottery.lotteryName, "close"); 
+          }
+
           return { ...lottery, RemainingTime: remainingTime };
         });
       });
     }, 1000);
 
-
     return () => clearInterval(interval);
   }, [data]);
+
+  const callAPI = async (lotteryId, typee) => {
+    try {
+      const response = await axios.post(`${link}/setStatus`, {lotteryName: lotteryId, typee})
+      console.log("API Response:", "success");
+    } catch (error) {
+      console.error("API Call Failed:", error);
+    }
+  };
+
 
   const openWhatsapp = () => {
     const phoneNumber = "9718992763";
