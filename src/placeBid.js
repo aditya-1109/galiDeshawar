@@ -94,7 +94,7 @@ const PlaceBid=()=>{
       },[])
 
 
-      const handleSingleInput = (e, index) => {
+      const handleSingleInput = (e, index, typee) => {
         if (e.target.value !== "") {
             let updated = false;
             const amount= parseInt(e.target.value);
@@ -114,7 +114,7 @@ const PlaceBid=()=>{
                 const object = {
                     betName: lotteryName,
                     betType,
-                    bidName: "singleDigit",
+                    bidName: typee,
                     amount: amount,
                     digit: index,
                     status: false,
@@ -190,15 +190,15 @@ const PlaceBid=()=>{
         if(bidName==="singlebid"){
             const object= {singlebid: !selectedBids.singlebid, doublebid: false, triplebid: false};
             setSelectedBids(object);
-            setChoice("singlebid");
+            setChoice("singlepanna");
         }else if(bidName==="doublebid"){
             const object= {singlebid: false, doublebid: !selectedBids.doublebid, triplebid: false};
             setSelectedBids(object);
-            setChoice("doublebid");
+            setChoice("doublepanna");
         }else{
             const object= {singlebid: false, doublebid: false, triplebid: !selectedBids.triplebid};
             setSelectedBids(object)
-            setChoice("triplebid");
+            setChoice("triplepanna");
         }
     };
 
@@ -252,15 +252,7 @@ const PlaceBid=()=>{
         
         {(bidName==="allpanna" || bidName==="fullsangam" || bidName==="halfsangam") &&(<div className="placebid-container">
                 <form onSubmit={handleSubmit} className="login-form">
-                    {(bidName==="allinone" || bidName==="jodidight" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor") && (
-                        <>
-                        <label htmlFor="g-pay"><b>Bid Digits</b></label>
-                        <input ref={digitRef} className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
-                        
-                        </>
-                    )}
-
-                    
+                   
 
                     {bidName==="allpanna" && (
                         <div>
@@ -324,7 +316,7 @@ const PlaceBid=()=>{
                 {singleArray.map((single, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{single}</div>
-                        <input onChange={(e)=>handleSingleInput(e,index)} type="Number" className="singleInput"/>
+                        <input onChange={(e)=>handleSingleInput(e,index, "singledigit")} type="Number" className="singleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
@@ -339,7 +331,7 @@ const PlaceBid=()=>{
                 {doubleArray.map((double, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{double}</div>
-                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
+                        <input onChange={(e)=>handleSingleInput(e,double,"jodidigit")} type="Number" className="doubleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
@@ -354,7 +346,7 @@ const PlaceBid=()=>{
                 {spArray.map((double, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{double}</div>
-                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
+                        <input onChange={(e)=>handleSingleInput(e,double, "singlepanna")} type="Number" className="doubleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
@@ -369,7 +361,7 @@ const PlaceBid=()=>{
                 {dpArray.map((double, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{double}</div>
-                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
+                        <input onChange={(e)=>handleSingleInput(e,double,"doublepanna")} type="Number" className="doubleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
@@ -384,7 +376,7 @@ const PlaceBid=()=>{
                 {cpArray.map((double, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{double}</div>
-                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
+                        <input onChange={(e)=>handleSingleInput(e,double, "triplepanna")} type="Number" className="doubleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
