@@ -70,39 +70,48 @@ const Home = () => {
 
   useEffect(() => {
     if (!data) return;
-
+  
     const interval = setInterval(() => {
       setData((prevData) => {
         return prevData.map((lottery) => {
           const remainingTime = calculateRemainingTime(lottery.finalTime);
           const initialTimeee = calculateRemainingTime(lottery.initialTime);
-
-          if (initialTimeee === "00:00:00" && !apiCalledRef.current.has(lottery.lotteryName) && !apiCalledfinalRef.current.has(lottery.lotteryName)) {
-            apiCalledRef.current.add(lottery.lotteryName); 
-            callAPI(lottery.lotteryName, "open"); 
+  
+          if (
+            initialTimeee === "00:00:00" && 
+            !apiCalledRef.current.has(lottery.lotteryName) && 
+            !apiCalledfinalRef.current.has(lottery.lotteryName)
+          ) {
+            apiCalledRef.current.add(lottery.lotteryName);
+            callAPI(lottery.lotteryName, "open");
           }
-
-          if (remainingTime === "00:00:00" && !apiCalledfinalRef.current.has(lottery.lotteryName) && apiCalledRef.current.has(lottery.lotteryName)) {
-            apiCalledfinalRef.current.add(lottery.lotteryName); 
-            callAPI(lottery.lotteryName, "close"); 
+  
+          if (
+            remainingTime === "00:00:00" && 
+            !apiCalledfinalRef.current.has(lottery.lotteryName) && 
+            apiCalledRef.current.has(lottery.lotteryName)
+          ) {
+            apiCalledfinalRef.current.add(lottery.lotteryName);
+            callAPI(lottery.lotteryName, "close");
           }
-
+  
           return { ...lottery, RemainingTime: remainingTime };
         });
       });
     }, 1000);
-
+  
     return () => clearInterval(interval);
   }, [data]);
-
+  
   const callAPI = async (lotteryId, typee) => {
     try {
-      const response = await axios.post(`${link}/setStatus`, {lotteryName: lotteryId, typee})
-      console.log("API Response:", "success");
+      await axios.post(`${link}/setStatus`, { lotteryName: lotteryId, typee });
+      console.log(`API Response: ${typee} status set for ${lotteryId}`);
     } catch (error) {
       console.error("API Call Failed:", error);
     }
   };
+  
 
 
   const openWhatsapp = () => {
