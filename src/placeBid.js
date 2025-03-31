@@ -435,6 +435,37 @@ const PlaceBid=()=>{
             </form>)}
         </div>
 
+        <div className="placebid-container">
+        {bidName==="doublepanna" &&(
+            <form onSubmit={handleSingleSubmit}>
+                <div className="single-container">
+                {dpArray.map((double, index)=>(
+                    <div className="single-digit-container">
+                        <div key={index} className="singleHeading">{double}</div>
+                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
+                    </div>
+                ))}
+                <button type="submit" className="register-button">ADD BID</button>
+            </div>
+            </form>)}
+        </div>
+
+        <div className="placebid-container">
+        {bidName==="triplepanna" &&(
+            <form onSubmit={handleSingleSubmit}>
+                <div className="single-container">
+                {cpArray.map((double, index)=>(
+                    <div className="single-digit-container">
+                        <div key={index} className="singleHeading">{double}</div>
+                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
+                    </div>
+                ))}
+                <button type="submit" className="register-button">ADD BID</button>
+            </div>
+            </form>)}
+        </div>
+        
+
             <div className="placebid-container">
                 <table className="table">
                     {fixBet.length > 0 ? (
