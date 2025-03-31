@@ -20,7 +20,6 @@ const PlaceBid=()=>{
     const amountRef= useRef();
     const {lotteryName}= useParams();
     const {bidName}= useParams();
-    const [evenodd, setEvenOdd]= useState("odd");
     const [betType, setBetType]= useState("open");
     const [bet, setBet]= useState([]);
     const singleArray= [0,1,2,3,4,5,6,7,8,9];
@@ -142,77 +141,7 @@ const PlaceBid=()=>{
     }
     
 
-    const handleEvenOdd=(value)=>{
-        if(value==="even"){
-            const bett= [{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 0, status: false},{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 2, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 4, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 6, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 8, status: false} ]
-            setBet(bett);
-            setEvenOdd("even")
-        }else if(value==="odd"){
-            const bett= [{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 1, status: false},{amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 3, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 5, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 7, status: false}, {amount: 0, bidName: "oddeven", betName:lotteryName, betType, digit: 9, status: false} ]
-            setBet(bett);
-            setEvenOdd("odd")
-        }else if(value==="halfred"){
-            const bett= [{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 5, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 16, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:27, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 38, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 49, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 50, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 61, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:72, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 83, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 94, status: false}  ]
-            setBet(bett);
-            setEvenOdd("even")
-            
-        }else if(value==="fullred"){
-            const bett= [{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 0, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 11, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:22, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 33, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 44, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 55, status: false},{amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 66, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit:77, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 88, status: false}, {amount: 0, bidName: "redbracket", betName:lotteryName, betType, digit: 99, status: false}  ]
-            setBet(bett);
-            setEvenOdd("odd")
-           
-        }
-    }
-
-    const checkBid=(bidDigit)=>{
-        if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
-            return "singlebid"
-        }else if(bidDigit.charAt(0)===bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
-            return "doublebid"
-        }else if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)===bidDigit.charAt(1) && bidDigit.charAt(0)!==bidDigit.charAt(2)){
-            return "doublebid"
-        }else if(bidDigit.charAt(0)!==bidDigit.charAt(1) && bidDigit.charAt(2)!==bidDigit.charAt(1) && bidDigit.charAt(0)===bidDigit.charAt(2)){
-            return "doublebid"
-        }else{
-            return "triplebid"
-        }
-    }
     
-    const validateDigit = (e) => {
-        e.preventDefault();
-
-        const newDigit = digitRef.current.value.trim(); // Trim whitespace to avoid invalid inputs
-
-        if (!newDigit) {
-            alert("Please enter a digit.");
-            
-        }
-    
-        if (!/^\d+$/.test(newDigit)) {
-            alert("The input must be numeric.");
-            
-        }  
-        if(newDigit.length===1){
-                setBet((prev)=>[...prev, {amount: 0, bidName: "singledigit", betName:lotteryName, betType, digit: newDigit, status: false}])
-            }else if(newDigit.length===2){
-                setBet((prev)=>[...prev, {amount: 0, bidName: "jodidight", betName:lotteryName, betType, digit: newDigit, status: false}])
-            }else if(newDigit.length===3){
-                const getBidName= checkBid(newDigit);
-                if(getBidName==="singlebid"){
-                    setBet((prev)=>[...prev, {amount: 0, bidName: "singlepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
-                }else if(getBidName==="doublebid"){
-                    setBet((prev)=>[...prev, {amount: 0, bidName: "doublepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
-                }else{
-                    setBet((prev)=>[...prev, {amount: 0, bidName: "triplepanna", betName:lotteryName, betType, digit: newDigit, status: false}])
-                }
-                
-            }else{
-                alert("The input is not valid!!")
-            }
-            digitRef.current.value = ""; 
-        
-    };
-
     const handleSingleSubmit=(e)=>{
         e.preventDefault();
         setFixBet((prev)=>[...prev, ...bet]);
@@ -239,9 +168,7 @@ const PlaceBid=()=>{
             setFixBet((prev) => [...prev, ...updatedBet]);
             }else{
                 if(digitRef.current.value!==""){
-                    if(bidName==="cppanna" || bidName==="panafamily"){
-                        bidName=checkBid(digitRef.current.value);
-                    }
+                    
                     const object={amount, bidName, betName:lotteryName, betType, digit: digitRef.current.value, status: false};
                 setFixBet((prev)=>[...prev,object])
                 }else{
@@ -329,7 +256,7 @@ const PlaceBid=()=>{
                         <>
                         <label htmlFor="g-pay"><b>Bid Digits</b></label>
                         <input ref={digitRef} className="g-pay" style={{padding:"10px"}} type="number" placeholder="Enter Digit" />
-                        {bidName==="allinone" && <button onClick={validateDigit}>Validate Digit</button>}
+                        
                         </>
                     )}
 
