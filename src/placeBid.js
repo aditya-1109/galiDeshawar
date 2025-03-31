@@ -343,19 +343,7 @@ const PlaceBid=()=>{
                         </>
                     )}
 
-                    {bidName==="oddeven" && (
-                        <div className="odd-even-button">
-                         <div onClick={()=>handleEvenOdd("even")} className={evenodd==="even"?"open-button":"close-button"}>EVEN</div>
-                         <div onClick={()=>handleEvenOdd("odd")} className={evenodd==="odd"?"open-button":"close-button"}>ODD</div>
-                        </div>
-                    )}
-
-                    {bidName==="redbracket" && (
-                        <div className="odd-even-button">
-                         <div onClick={()=>handleEvenOdd("halfred")} className={evenodd==="even"?"open-button":"close-button"}>Half Red Bracket</div>
-                         <div onClick={()=>handleEvenOdd("fullred")} className={evenodd==="odd"?"open-button":"close-button"}>Full Red Bracket</div>
-                        </div>
-                    )}
+                    
 
                     {bidName==="choicepanna" && (
                         <div>
@@ -428,7 +416,7 @@ const PlaceBid=()=>{
         </div>
 
         <div className="placebid-container">
-        {bidName==="doubledigit" &&(
+        {bidName==="jodidigit" &&(
             <form onSubmit={handleDoubleSubmit}>
                 <div className="single-container">
                 {doubleArray.map((double, index)=>(
