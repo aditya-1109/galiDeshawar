@@ -422,7 +422,7 @@ const PlaceBid=()=>{
                 {doubleArray.map((double, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{double}</div>
-                        <input onChange={(e)=>handledoubleInput(e,index)} type="Number" className="doubleInput"/>
+                        <input onChange={(e)=>handledoubleInput(e,double)} type="Number" className="doubleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
