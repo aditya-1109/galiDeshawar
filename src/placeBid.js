@@ -250,7 +250,7 @@ const PlaceBid=()=>{
 
 
         
-        {(bidName==="allpanna") &&(<div className="placebid-container">
+        {(bidName==="allpanna" || bidName==="fullsangam" || bidName==="halfsangam") &&(<div className="placebid-container">
                 <form onSubmit={handleSubmit} className="login-form">
                     {(bidName==="allinone" || bidName==="jodidight" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor") && (
                         <>
