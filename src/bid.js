@@ -22,7 +22,7 @@ const Bid=()=>{
 
                 
 
-                <div onClick={()=>nevigate(`/placebid/${lotteryName}/jodidight`)} className="All-in-one">
+                <div onClick={()=>nevigate(`/placebid/${lotteryName}/jodidigit`)} className="All-in-one">
                     <FaDice className="gamepad-icon" />
                     <p>JODI DIGIT</p>
                 </div>
