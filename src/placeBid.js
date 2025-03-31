@@ -24,6 +24,7 @@ const PlaceBid=()=>{
     const [betType, setBetType]= useState("open");
     const [bet, setBet]= useState([]);
     const singleArray= [0,1,2,3,4,5,6,7,8,9];
+    const doubleArray= [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99]
     const [data, setData]= useState(null);
     const [fixBet, setFixBet]= useState([]);
     const leftRef= useRef("");
@@ -35,15 +36,7 @@ const PlaceBid=()=>{
     const closeSangamRef= useRef("");
     const [todayBet, setTodayBet]= useState(null);
 
-    useEffect(()=>{
-        if(bidName==="oddeven"){
-            const bett= [{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 1, status: false},{amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 3, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 5, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 7, status: false}, {amount: "", bidName: "oddeven", betName:lotteryName, betType, digit: 9, status: false} ]
-            setBet(bett);
-        }else if(bidName==="redbracket"){
-            const bett= [{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 0, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 11, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:22, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 33, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 44, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 55, status: false},{amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 66, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit:77, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 88, status: false}, {amount: "", bidName: "redbracket", betName:lotteryName, betType, digit: 99, status: false}  ]
-            setBet(bett);
-        }
-    },[])
+    
 
     useEffect(() => {
         const getData = async () => {
@@ -100,6 +93,37 @@ const PlaceBid=()=>{
                     betName: lotteryName,
                     betType,
                     bidName: "singleDigit",
+                    amount: amount,
+                    digit: index,
+                    status: false,
+                };
+                setBet((prev) => [...prev, object]); 
+            }
+        }
+
+    };
+
+    const handledoubleInput = (e, index) => {
+        if (e.target.value !== "") {
+            let updated = false;
+            const amount= parseInt(e.target.value);
+            
+            const updatedBet = bet.map((bett) => {
+                if (bett.digit === index) {
+                    updated = true;
+                    return { ...bett, amount }; 
+                }
+                return bett; 
+            });
+    
+            if (updated) {
+                setBet(updatedBet); 
+            } else {
+                
+                const object = {
+                    betName: lotteryName,
+                    betType,
+                    bidName: "doubleDigit",
                     amount: amount,
                     digit: index,
                     status: false,
@@ -201,6 +225,12 @@ const PlaceBid=()=>{
         setBet([]);
     }
 
+    const handleDoubleSubmit=(e)=>{
+        e.preventDefault();
+        setFixBet((prev)=>[...prev, ...bet]);
+        setBet([]);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
     
@@ -294,15 +324,16 @@ const PlaceBid=()=>{
 
         <div className="place-bid-header">
             <div className="date"> {formattedDate}</div>
-            {(bidName==="jodidight" || bidName==="redbracket" || bidName==="jodifamily")?"":
+            
             <div className="open-close">
                 <button onClick={()=>setBetType("open")} className={betType==="open"?"open-button":"close-button"}>OPEN</button>
                 <button onClick={()=>setBetType("close")} className={betType==="close"?"open-button":"close-button"}>CLOSE</button>
-            </div>}
+            </div>
         </div>
 
+
         
-        {(bidName==="allinone" || bidName==="oddeven" || bidName==="jodidight" || bidName==="redbracket" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor" || bidName==="halfsangam" || bidName==="fullsangam" || bidName==="choicepanna") &&(<div className="placebid-container">
+        {(bidName==="allinone" || bidName==="oddeven" || bidName==="jodidigit" || bidName==="redbracket" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor" || bidName==="halfsangam" || bidName==="fullsangam" || bidName==="choicepanna") &&(<div className="placebid-container">
                 <form onSubmit={handleSubmit} className="login-form">
                     {(bidName==="allinone" || bidName==="jodidight" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor") && (
                         <>
@@ -389,6 +420,21 @@ const PlaceBid=()=>{
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{single}</div>
                         <input onChange={(e)=>handleSingleInput(e,index)} type="Number" className="singleInput"/>
+                    </div>
+                ))}
+                <button type="submit" className="register-button">ADD BID</button>
+            </div>
+            </form>)}
+        </div>
+
+        <div className="placebid-container">
+        {bidName==="doubledigit" &&(
+            <form onSubmit={handleDoubleSubmit}>
+                <div className="single-container">
+                {doubleArray.map((double, index)=>(
+                    <div className="single-digit-container">
+                        <div key={index} className="singleHeading">{double}</div>
+                        <input onChange={(e)=>handledoubleInput(e,index)} type="Number" className="doubleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
