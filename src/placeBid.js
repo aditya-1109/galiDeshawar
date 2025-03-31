@@ -25,6 +25,29 @@ const PlaceBid=()=>{
     const [bet, setBet]= useState([]);
     const singleArray= [0,1,2,3,4,5,6,7,8,9];
     const doubleArray= [10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99]
+    const spArray=[128, 137, 146, 236, 245, 290, 380, 470, 489, 560, 579, 678,
+        129, 138, 147, 156, 237, 246, 345, 390, 480, 570, 589, 679,
+       120, 139, 148, 157, 238, 247, 256, 346, 490, 580, 670, 689,
+        130, 149, 158, 167, 239, 248, 257, 347, 356, 590, 680, 789,
+        140, 159, 168, 230, 249, 258, 267, 348, 357, 456, 690, 780,
+        123, 150, 169, 178, 240, 259, 268, 349, 358, 367, 457, 790,
+        124, 160, 278, 179, 250, 269, 340, 359, 368, 458, 467, 890,
+        125, 134, 170, 189, 260, 279, 350, 369, 468, 378, 459, 567,
+        126, 135, 180, 234, 270, 289, 360, 379, 450, 469, 478, 568,
+        127, 136, 145, 190, 235, 280, 370, 389, 460, 479, 569, 578];
+    
+    const dpArray=[100, 119, 155, 227, 335, 344, 399, 588, 669,
+        110, 200, 228, 255, 366, 499, 660, 688, 778,
+        166, 229, 300, 337, 355, 445, 599, 779, 788,
+         112, 220, 266, 338, 400, 446, 455, 699, 770,
+        600, 114, 277, 330, 448, 466, 556, 880, 899,
+        113, 122, 177, 339, 366, 447, 500, 799, 889, 
+        115, 133, 188, 223, 377, 449, 557, 566, 700,
+        116, 224, 233, 288, 440, 477, 558, 800, 990,
+        117, 144, 199, 225, 388, 559, 577, 667, 900,
+        118, 226, 244, 299, 334, 488, 550, 668, 677];
+
+    const cpArray=[111,222,333,444,555,666,,777,888,999];
     const [data, setData]= useState(null);
     const [fixBet, setFixBet]= useState([]);
     const leftRef= useRef("");
@@ -103,36 +126,7 @@ const PlaceBid=()=>{
 
     };
 
-    const handledoubleInput = (e, index) => {
-        if (e.target.value !== "") {
-            let updated = false;
-            const amount= parseInt(e.target.value);
-            
-            const updatedBet = bet.map((bett) => {
-                if (bett.digit === index) {
-                    updated = true;
-                    return { ...bett, amount }; 
-                }
-                return bett; 
-            });
-    
-            if (updated) {
-                setBet(updatedBet); 
-            } else {
-                
-                const object = {
-                    betName: lotteryName,
-                    betType,
-                    bidName: "doubleDigit",
-                    amount: amount,
-                    digit: index,
-                    status: false,
-                };
-                setBet((prev) => [...prev, object]); 
-            }
-        }
-
-    };
+   
 
     const handleSangam=()=>{
         if(openSangamRef.current.value!=="" && closeSangamRef.current.value!==""){
@@ -225,11 +219,7 @@ const PlaceBid=()=>{
         setBet([]);
     }
 
-    const handleDoubleSubmit=(e)=>{
-        e.preventDefault();
-        setFixBet((prev)=>[...prev, ...bet]);
-        setBet([]);
-    }
+   
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -417,12 +407,27 @@ const PlaceBid=()=>{
 
         <div className="placebid-container">
         {bidName==="jodidigit" &&(
-            <form onSubmit={handleDoubleSubmit}>
+            <form onSubmit={handleSingleSubmit}>
                 <div className="single-container">
                 {doubleArray.map((double, index)=>(
                     <div className="single-digit-container">
                         <div key={index} className="singleHeading">{double}</div>
-                        <input onChange={(e)=>handledoubleInput(e,double)} type="Number" className="doubleInput"/>
+                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
+                    </div>
+                ))}
+                <button type="submit" className="register-button">ADD BID</button>
+            </div>
+            </form>)}
+        </div>
+
+        <div className="placebid-container">
+        {bidName==="singlepanna" &&(
+            <form onSubmit={handleSingleSubmit}>
+                <div className="single-container">
+                {spArray.map((double, index)=>(
+                    <div className="single-digit-container">
+                        <div key={index} className="singleHeading">{double}</div>
+                        <input onChange={(e)=>handleSingleInput(e,double)} type="Number" className="doubleInput"/>
                     </div>
                 ))}
                 <button type="submit" className="register-button">ADD BID</button>
