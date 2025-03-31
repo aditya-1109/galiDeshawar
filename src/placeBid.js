@@ -421,7 +421,7 @@ const PlaceBid=()=>{
         </div>
 
         <div className="placebid-container">
-        {bidName==="singlepanna" &&(
+        {(bidName==="singlepanna" || bidName==="sppanna") &&(
             <form onSubmit={handleSingleSubmit}>
                 <div className="single-container">
                 {spArray.map((double, index)=>(
@@ -436,7 +436,7 @@ const PlaceBid=()=>{
         </div>
 
         <div className="placebid-container">
-        {bidName==="doublepanna" &&(
+        {(bidName==="doublepanna" || bidName==="dppanna") &&(
             <form onSubmit={handleSingleSubmit}>
                 <div className="single-container">
                 {dpArray.map((double, index)=>(
@@ -451,7 +451,7 @@ const PlaceBid=()=>{
         </div>
 
         <div className="placebid-container">
-        {bidName==="triplepanna" &&(
+        {(bidName==="triplepanna" || bidName==="cppanna") &&(
             <form onSubmit={handleSingleSubmit}>
                 <div className="single-container">
                 {cpArray.map((double, index)=>(

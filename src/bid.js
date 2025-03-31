@@ -52,7 +52,7 @@ const Bid=()=>{
                     <p>TRIPLE PANA</p>
                 </div>
 
-                <div onClick={()=>nevigate(`/placebid/${lotteryName}/choicepanna`)} className="All-in-one">
+                <div onClick={()=>nevigate(`/placebid/${lotteryName}/allpanna`)} className="All-in-one">
                     <FaGem className="gamepad-icon" />
                     <p>All PANA</p>
                 </div>
@@ -96,12 +96,12 @@ const Bid=()=>{
         <div className="digit-bid">
             <div className="bid-heading"><b>MOTOR BID</b> <FaPlay className="playbid-icon" /></div>
             <div className="bid-icon-container">
-                <div onClick={()=>nevigate(`/placebid/${lotteryName}/singlepanna`)} className="All-in-one">
+                <div onClick={()=>nevigate(`/placebid/${lotteryName}/sppanna`)} className="All-in-one">
                     <p className="spade-icon">&#9824;</p>
                     <p>SP MOTOR</p>
                 </div>
 
-                <div onClick={()=>nevigate(`/placebid/${lotteryName}/doublepanna`)} className="All-in-one">
+                <div onClick={()=>nevigate(`/placebid/${lotteryName}/dppanna`)} className="All-in-one">
                     <FaDiceThree className="gamepad-icon" />
                     <p>DP MOTOR</p>
                 </div>
