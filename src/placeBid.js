@@ -333,7 +333,7 @@ const PlaceBid=()=>{
 
 
         
-        {(bidName==="allinone" || bidName==="oddeven" || bidName==="jodidigit" || bidName==="redbracket" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor" || bidName==="halfsangam" || bidName==="fullsangam" || bidName==="choicepanna") &&(<div className="placebid-container">
+        {(bidName==="allinone" || bidName==="oddeven"  || bidName==="redbracket" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor" || bidName==="halfsangam" || bidName==="fullsangam" || bidName==="choicepanna") &&(<div className="placebid-container">
                 <form onSubmit={handleSubmit} className="login-form">
                     {(bidName==="allinone" || bidName==="jodidight" || bidName==="singlepanna" || bidName==="doublepanna" || bidName==="triplepanna" || bidName==="singlepatti" || bidName==="doublepatti" || bidName==="jodifamily" || bidName==="panafamily" || bidName==="cppanna" || bidName==="spmotor" || bidName==="dpmotor") && (
                         <>
