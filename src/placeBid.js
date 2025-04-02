@@ -11,10 +11,12 @@ const PlaceBid=()=>{
     const [user, setUser]= useState(null);
     const link= process.env.REACT_APP_LINK;
     const nevigate= useNavigate();
-    const today = new Date();
-    const day = today.getDate();
-    const month = today.toLocaleString('default', { month: 'short' }); 
-    const year = today.getFullYear();
+    const dat = new Date;
+  const day = dat.getDate();
+  const month = dat.getMonth() + 1;
+  const date = `${day}/${month}`;
+    
+    const year = dat.getFullYear();
     const formattedDate = `${month}, ${day < 10 ? '0' : ''}${day} ${year}`;
     const digitRef= useRef();
     const amountRef= useRef();
@@ -62,10 +64,7 @@ const PlaceBid=()=>{
 
     useEffect(() => {
         const getData = async () => {
-            const dat= new Date;
-            const day= dat.getDate();
-            const month= dat.getMonth() +1;
-            const date= `${day}/${month}`;
+            
 
           const response = await axios.get(`${link}/lotteryData`);
           response.data.forEach((lottery)=>{
@@ -118,6 +117,7 @@ const PlaceBid=()=>{
                     amount: amount,
                     digit: index,
                     status: false,
+                    date: date
                 };
                 setBet((prev) => [...prev, object]); 
             }
@@ -131,9 +131,9 @@ const PlaceBid=()=>{
         if(openSangamRef.current.value!=="" && closeSangamRef.current.value!==""){
             let object;
             if(betType==="open"){
-                object= {amount: 0, bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+                object= {amount: 0, bidName , betName:lotteryName,date: date, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
             }else{
-                object= {amount: 0, bidName , betName:lotteryName, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+                object= {amount: 0, bidName , betName:lotteryName,date: date,  betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
             }
             setBet([object]);
             
@@ -169,7 +169,7 @@ const PlaceBid=()=>{
             }else{
                 if(digitRef.current.value!==""){
                     
-                    const object={amount, bidName, betName:lotteryName, betType, digit: digitRef.current.value, status: false};
+                    const object={amount, bidName, betName:lotteryName,date: date, betType, digit: digitRef.current.value, status: false};
                 setFixBet((prev)=>[...prev,object])
                 }else{
                     alert("Please enter the Number")
@@ -182,7 +182,7 @@ const PlaceBid=()=>{
 
     const handleChoiceInput=()=>{
         if(leftRef.current.value!=="" && middleRef.current.value!=="" && rightRef.current.value!==""){
-            setBet([{amount: 0, bidName: choice, betName:lotteryName, betType, digit: `${leftRef.current.value}${middleRef.current.value}${rightRef.current.value}`, status: false}])
+            setBet([{amount: 0, bidName: choice, betName:lotteryName,date: date,  betType, digit: `${leftRef.current.value}${middleRef.current.value}${rightRef.current.value}`, status: false}])
         }
     }
 

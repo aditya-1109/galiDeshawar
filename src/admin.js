@@ -105,6 +105,7 @@ const Admin = () => {
     }
 
     console.log(`Submitting data for ${lotteryName}:`, lotteryData);
+    
 
     const response = await axios.post(`${link}/submitData`, { lotteryName, lotteryData });
 
