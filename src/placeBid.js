@@ -11,7 +11,7 @@ const PlaceBid=()=>{
     const [user, setUser]= useState(null);
     const link= process.env.REACT_APP_LINK;
     const nevigate= useNavigate();
-    const dat = new Date;
+    const dat = new Date();
   const day = dat.getDate();
   const month = dat.getMonth() + 1;
   const date = `${day}/${month}`;
@@ -116,7 +116,6 @@ const PlaceBid=()=>{
                     bidName: typee,
                     amount: amount,
                     digit: index,
-                    status: false,
                     date: date
                 };
                 setBet((prev) => [...prev, object]); 
@@ -131,9 +130,9 @@ const PlaceBid=()=>{
         if(openSangamRef.current.value!=="" && closeSangamRef.current.value!==""){
             let object;
             if(betType==="open"){
-                object= {amount: 0, bidName , betName:lotteryName,date: date, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+                object= {amount: 0, bidName , betName:lotteryName,date: date, betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value}
             }else{
-                object= {amount: 0, bidName , betName:lotteryName,date: date,  betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value, status: false}
+                object= {amount: 0, bidName , betName:lotteryName,date: date,  betType, digit: openSangamRef.current.value, sangam: closeSangamRef.current.value}
             }
             setBet([object]);
             
@@ -169,7 +168,7 @@ const PlaceBid=()=>{
             }else{
                 if(digitRef.current.value!==""){
                     
-                    const object={amount, bidName, betName:lotteryName,date: date, betType, digit: digitRef.current.value, status: false};
+                    const object={amount, bidName, betName:lotteryName,date: date, betType, digit: digitRef.current.value};
                 setFixBet((prev)=>[...prev,object])
                 }else{
                     alert("Please enter the Number")
@@ -182,7 +181,7 @@ const PlaceBid=()=>{
 
     const handleChoiceInput=()=>{
         if(leftRef.current.value!=="" && middleRef.current.value!=="" && rightRef.current.value!==""){
-            setBet([{amount: 0, bidName: choice, betName:lotteryName,date: date,  betType, digit: `${leftRef.current.value}${middleRef.current.value}${rightRef.current.value}`, status: false}])
+            setBet([{amount: 0, bidName: choice, betName:lotteryName,date: date,  betType, digit: `${leftRef.current.value}${middleRef.current.value}${rightRef.current.value}`}])
         }
     }
 
