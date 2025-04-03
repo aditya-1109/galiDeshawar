@@ -214,7 +214,7 @@ const PlaceBid=()=>{
                 total +=amount;
             })
 
-            console.log(total, user?.wallet);
+            
             if(total<=user?.wallet){
             const response= await axios.post(`${link}/setBet`, {fixBet, number});
                 if(response.data.success){

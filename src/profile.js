@@ -40,13 +40,10 @@ const Profile=()=>{
             return;
         }
     
-            const response= await axios.post(`${link}/updateUser`, {name, email, mobile: mobileNumber, number})
+            const response= await axios.post(`${link}/updateUser`, {name, email, mobile: mobileNumber, number, password: null})
             if(response.data.success){
                 alert(response.data.message);
-                if(mobileNumber){
-                    localStorage.removeItem("number");
-                    localStorage.setItem("number", mobileNumber);
-                }
+                
             }else{
                 alert(response.data.message)
             }
@@ -66,9 +63,11 @@ const Profile=()=>{
             return;
         }
     
-        const response= await axios.post(`${link}/updateUser`, {password, number})
+        const response= await axios.post(`${link}/updateUser`, {name: null, email: null, mobile: null, number, password})
             if(response.data.success){
-                alert(response.data.message)
+                alert(response.data.message);
+                localStorage.removeItem("code")
+                localStorage.setItem("code", response.data.user.becryptPassword);
             }else{
                 alert("couldn't updated")
             }
